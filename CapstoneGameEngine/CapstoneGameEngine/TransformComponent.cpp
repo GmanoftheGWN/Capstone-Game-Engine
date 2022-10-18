@@ -11,7 +11,9 @@ TransformComponent::TransformComponent(Ref<Component> parent_):Component(parent_
 }
 
 TransformComponent::TransformComponent(Ref<Component> parent_, Vec3 pos_, Quaternion orientation_, Vec3 scale_) : Component(parent_),
-pos(pos_), orientation(orientation_), scale(scale_) {
+	pos(pos_), orientation(orientation_), scale(scale_), vel(Vec3(0.0f, 0.0f, 0.0f)), accel(Vec3(0.0f, 0.0f, 0.0f)), mass(0.0f), rotation(0.0f),
+	angular(0.0f), maxSpeed(5.0f), maxAcceleration(0.0f), maxRotation(0.0f), maxAngular(0.0f), radius(0.0f) {
+	
 }
 
 TransformComponent::~TransformComponent() {

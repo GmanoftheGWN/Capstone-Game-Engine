@@ -14,7 +14,7 @@ public:
 	enum class SCENE_NUMBER {
 		SCENE0 = 0,
 		SCENE1,
-		SCENE2,
+		AITEST,
 		SCENE3,
 		SCENE4,
 		SCENE5,
