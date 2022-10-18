@@ -4,10 +4,20 @@
 #include "Quaternion.h"
 using namespace MATH;
 class TransformComponent : public Component {
-private:
+protected:
 	Vec3 pos;
-	Vec3 scale;
+	Vec3 vel;
+	Vec3 accel;
+	float mass;
 	Quaternion orientation;
+	float rotation;			// rotating at this speed (radians per second?)
+	float angular;          // angular acceleration
+	float maxSpeed;
+	float maxAcceleration;
+	float maxRotation;
+	float maxAngular;
+	float radius;
+	Vec3 scale;
 
 public:
 	TransformComponent(Ref<Component> parent_);
