@@ -2,9 +2,14 @@
 #define SCENEMANAGER_H
 
 #include <string>
+#include "Player.h"
+class Player;
+
 class SceneManager  {
 public:
-	
+	Ref<Player> player;
+	Ref<Player> getPlayer() { return player; }
+
 	SceneManager();
 	~SceneManager();
 	void Run();

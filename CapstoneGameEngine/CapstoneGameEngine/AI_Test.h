@@ -9,10 +9,12 @@ using namespace MATH;
 union SDL_Event;
 
 class AI_Test : public Scene {
-private:
-	std::unique_ptr<AssetManager> assetManager;
 public:
-	explicit AI_Test();
+	std::unique_ptr<AssetManager> assetManager;
+	SceneManager* game;
+
+public:
+	explicit AI_Test(SceneManager* game_);
 	virtual ~AI_Test();
 
 	virtual bool OnCreate();

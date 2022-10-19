@@ -3,7 +3,7 @@
   <Scene0>
     <Camera>
       <Component name ="Transform">
-        <Location x="0.0" y="0.0" z="-20.0"/>
+        <Location x="0.0" y="0.0" z="-80.0"/>
         <Orientation type="AngleAxis" angle="0.0" axis="x"/>
       </Component>
       <Projection fovy="0.0" near="0.0" far="0.0"/>
@@ -39,7 +39,7 @@
 
     <Component name ="Mesh" type ="MarioMesh" filename="meshes/Mario.obj"/>
     <Component name ="Mesh" type ="HammerMesh" filename="meshes/Hammer.obj"/>
-    <Component name ="Material" type ="MarioTexture" filename="textures/mario_main.png"/>
+    <Component name ="Material" type ="MarioTexture" filename="textures/mario_fire.png"/>
     <Component name ="Material" type ="HammerTexture" filename="textures/hammer_BaseColor.png"/>
     <Component name ="Shader" type ="TextureShader" vertFilename="shaders/textureVert.glsl" fragFilename="shaders/textureFrag.glsl"/>
 

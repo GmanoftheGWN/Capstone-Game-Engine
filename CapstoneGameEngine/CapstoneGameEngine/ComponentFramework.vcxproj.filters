@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Utility">
       <UniqueIdentifier>{d7d2f79d-ef77-4bd9-8058-f6a88cc92535}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Steering">
+      <UniqueIdentifier>{4a365dce-1ac6-4a08-8c30-799c620eb68b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Steering">
+      <UniqueIdentifier>{70482075-b931-4d51-be16-cca4b2e4f03c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -107,6 +113,30 @@
     </ClCompile>
     <ClCompile Include="AI_Test.cpp">
       <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="SteeringOutput.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
+    <ClCompile Include="KinematicSteeringOutput.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticBody.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
+    <ClCompile Include="KinematicBody.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
+    <ClCompile Include="KinematicSeek.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KinematicArrive.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +232,30 @@
     </ClInclude>
     <ClInclude Include="AI_Test.h">
       <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="SteeringOutput.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="KinematicSteeringOutput.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticBody.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="KinematicBody.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="KinematicSeek.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="KinematicArrive.h">
+      <Filter>Header Files\Steering</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

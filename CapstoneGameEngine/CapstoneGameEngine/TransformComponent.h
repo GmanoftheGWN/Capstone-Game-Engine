@@ -22,12 +22,37 @@ protected:
 public:
 	TransformComponent(Ref<Component> parent_);
 	TransformComponent(Ref<Component> parent_, Vec3 pos_, Quaternion orientation_, Vec3 scale_ = Vec3(1.0f, 1.0f, 1.0f));
+	TransformComponent(Ref<Component> parent_, Vec3 pos_, Quaternion orientation_
+		, Vec3 vel_
+		, Vec3 accel_
+		, float mass_
+		, float radius_
+		, float rotation_
+		, float angular_
+		, float maxSpeed_
+		, float maxAcceleration_
+		, float maxRotation_
+		, float maxAngular_
+	    , Vec3 scale_ = Vec3(1.0f, 1.0f, 1.0f));
 	~TransformComponent();
 	bool OnCreate();
 	void OnDestroy();
 	void Update(const float deltaTime_);
-	void Render() const;
+	void ApplyForce(Vec3 force_) { accel = force_ / mass; }
 	Vec3 GetPosition() { return pos; }
+	void SetPosition(Vec3 pos_) { pos = pos_; }
+	Vec3 getVel() { return vel; }
+	void SetVel(Vec3 vel_) { vel = vel_; }
+	Vec3 getAccel() { return accel; }
+	void setAccel(Vec3 accel_) { accel = accel_; }
+	float getMass() { return mass; }
+	Quaternion getOrientation() { return orientation; }
+	float getRotation() { return rotation; }
+	float getAngular() { return angular; }
+	float getMaxSpeed() { return maxSpeed; }
+	float getMaxAcceleration() { return maxAcceleration; }
+	float getMaxRotation() { return maxRotation; }
+	float getMaxAngular() { return maxAngular; }
 	Vec3 GetScale() { return scale; }
 	Quaternion GetQuaternion() { return orientation; }
 	Matrix4 GetTransformMatrix() const;
@@ -37,5 +62,6 @@ public:
 		scale = scale_;
 	}
 	void SetParent(Ref<Component> parent_) { parent = parent_; }
+	void Render() const;
 };
 

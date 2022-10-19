@@ -1,6 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 #include "Actor.h"
+#include "Debug.h"
 #include "TransformComponent.h"
 #include <unordered_map>
 
