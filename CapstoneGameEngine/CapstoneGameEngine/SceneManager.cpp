@@ -8,7 +8,7 @@
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
-	fps(60), isRunning(false), fullScreen(false) {
+	fps(60), isRunning(false), fullScreen(false), player(nullptr) {
 	Debug::Info("Starting the SceneManager", __FILE__, __LINE__);
 }
 
@@ -44,9 +44,46 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 		return false;
 	}
 
+	// create player
+	Ref<Component> parent;
+	float mass = 1.0f;
+	float radius = 0.5f;
+	Quaternion orientation;
+	float rotation = 0.0f;
+	float angular = 0.0f;
+	// These are not very good defaults, but they will prevent compiler warnings.
+	float maxSpeed = 5.0f;
+	float maxAcceleration = 10.0f;
+	float maxRotation = 1.0f;
+	float maxAngular = 1.0f;
+	Vec3 pos(0.0f, 0.0f, 10.0f);
+	Vec3 vel(0.0f, 0.0f, 0.0f);
+	Vec3 accel(0.0f, 0.0f, 0.0f);
+
+	player = std::make_shared<Player>
+		(
+			parent,
+			pos,
+			orientation,
+			vel,
+			accel,
+			mass,
+			radius,
+			rotation,
+			angular,
+			maxSpeed,
+			maxAcceleration,
+			maxRotation,
+			maxAngular,
+			this
+			);
+	if (player->OnCreate() == false) {
+		return false;
+	}
+
 	/********************************   Default first scene   ***********************/
 	BuildNewScene(SCENE_NUMBER::AITEST);
-	
+
 	return true;
 }
 
@@ -127,7 +164,7 @@ void SceneManager::BuildNewScene(SCENE_NUMBER scene) {
 		break;
 
 	case SCENE_NUMBER::AITEST:
-		currentScene = new AI_Test();
+		currentScene = new AI_Test(this);
 		status = currentScene->OnCreate();
 		break;
 

@@ -8,14 +8,18 @@
 #include "Actor.h"
 #include "CameraActor.h"
 #include "LightActor.h"
+#include "Character.h"
 #include "TransformComponent.h"
 #include "MeshComponent.h"
 #include "ShaderComponent.h"
 #include "MaterialComponent.h"
+#include "StaticBody.h"
+#include "KinematicArrive.h"
 #include "Debug.h"
 
-AI_Test::AI_Test() {
+AI_Test::AI_Test(SceneManager* game_) {
 	Debug::Info("Created AI_Test: ", __FILE__, __LINE__);
+	game = game_;
 }
 
 AI_Test::~AI_Test() {
@@ -32,9 +36,24 @@ bool AI_Test::OnCreate() {
 
 	AddActor<LightActor>("Light", nullptr, assetManager->GetAsset<LightActor>("Light"));
 
-	AddActor<Actor>("Mario", nullptr, assetManager->GetAsset<Actor>("Mario"));
+	/*AddActor<Actor>("Mario", nullptr, assetManager->GetAsset<Actor>("Mario"));
+	AddActor<Actor>("Hammer", GetActor<Actor>("Mario"), assetManager->GetAsset<Actor>("Hammer"));*/
 
-	AddActor<Actor>("Hammer", GetActor<Actor>("Mario"), assetManager->GetAsset<Actor>("Hammer"));
+	AddActor<Player>("Player", nullptr, game->getPlayer());
+	GetActor<Player>("Player")->AddComponent<MeshComponent>(assetManager->GetAsset<MeshComponent>("MarioMesh"));
+	GetActor<Player>("Player")->AddComponent<MaterialComponent>(assetManager->GetAsset<MaterialComponent>("MarioTexture"));
+	GetActor<Player>("Player")->AddComponent<ShaderComponent>(assetManager->GetAsset<ShaderComponent>("TextureShader"));
+	GetActor<Player>("Player")->OnCreate();
+	GetActor<Player>("Player")->GetComponent<TransformComponent>()->SetTransform(Vec3(), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
+
+	AddActor<Actor>("NPC", nullptr, std::make_shared<Actor>(nullptr));
+	GetActor<Actor>("NPC")->AddComponent<StaticBody>(std::make_shared<StaticBody>(nullptr, Vec3(), Quaternion(), 5.0f, 10.0f));
+	GetActor<Actor>("NPC")->GetComponent<StaticBody>()->SetPosition(Vec3(2.0f, 5.0f, 10.0f));
+	GetActor<Actor>("NPC")->AddComponent<MeshComponent>(assetManager->GetAsset<MeshComponent>("MarioMesh"));
+	GetActor<Actor>("NPC")->AddComponent<MaterialComponent>(assetManager->GetAsset<MaterialComponent>("MarioTexture"));
+	GetActor<Actor>("NPC")->AddComponent<ShaderComponent>(assetManager->GetAsset<ShaderComponent>("TextureShader"));
+	GetActor<Actor>("NPC")->OnCreate();
+	GetActor<Actor>("NPC")->GetComponent<StaticBody>()->SetTransform(Vec3(), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
 
 	return true;
 }
@@ -45,7 +64,9 @@ void AI_Test::OnDestroy() {
 }
 
 void AI_Test::HandleEvents(const SDL_Event& sdlEvent) {
-	Ref<CameraActor> camera = GetActor<CameraActor>("Camera");
+	game->getPlayer()->HandleEvents(sdlEvent);
+
+	/*Ref<CameraActor> camera = GetActor<CameraActor>("Camera");
 	Ref<TransformComponent> cameraTransform = camera->GetComponent<TransformComponent>();
 	Ref<Actor> mario = GetActor<Actor>("Mario");
 	Ref<TransformComponent> marioTransform = mario->GetComponent<TransformComponent>();
@@ -94,11 +115,21 @@ void AI_Test::HandleEvents(const SDL_Event& sdlEvent) {
 
 	default:
 		break;
-	}
+	}*/
 }
 
 void AI_Test::Update(const float deltaTime) {
+	KinematicArrive* steering_algorithm;
+	steering_algorithm = new KinematicArrive(GetActor<Actor>("NPC"), GetActor<Player>("Player"), 7.0f);
+	KinematicSteeringOutput* steering;
+	steering = steering_algorithm->getSteering();
 
+	// Calculate and apply any steering for npc's
+	//blinky->Update(deltaTime);
+	GetActor<Actor>("NPC")->GetComponent<StaticBody>()->Update(deltaTime, steering);
+
+	// Update player
+	game->getPlayer()->Update(deltaTime);
 }
 
 void AI_Test::Render() const {

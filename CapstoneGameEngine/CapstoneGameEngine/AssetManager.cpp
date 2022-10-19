@@ -55,7 +55,7 @@ void AssetManager::ReadManifest() {
 		sceneData = rootData->FirstChildElement("Scene1");
 	}
 	else if (sceneNumber == SceneManager::SCENE_NUMBER::AITEST) {
-		sceneData = rootData->FirstChildElement("Scene1");
+		sceneData = rootData->FirstChildElement("Scene0");
 	}
 
 	//Camera
