@@ -3,15 +3,15 @@
   <Scene0>
     <Camera>
       <Component name ="Transform">
-        <Location x="0.0" y="0.0" z="-80.0"/>
-        <Orientation type="AngleAxis" angle="0.0" axis="x"/>
+        <Location x="0.0" y="0.0" z="-40.0"/>
+		  <Orientation type="AngleAxis" angle="-60.0" axisX="1.0" axisY="0.0" axisZ="0.0"/>
       </Component>
       <Projection fovy="0.0" near="0.0" far="0.0"/>
       <Skybox></Skybox>
     </Camera>
 
     <Light>
-      <Location x="0.0" y="10.0" z="22.0"/>
+      <Location x="5.0" y="0.0" z="22.0"/>
       <Diffuse red="1.0" green="1.0" blue="1.0" alpha="1.0"/>
       <Ambient red="0.5" green="0.4" blue="0.3" alpha="0.2"/>
       <Specular red="0.5" green="0.4" blue="0.3" alpha="0.2"/>

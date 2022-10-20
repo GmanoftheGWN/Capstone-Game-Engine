@@ -23,6 +23,7 @@ void StaticBody::Update(float deltaTime, KinematicSteeringOutput* steering) {
 
 void StaticBody::newOrientation() {
 	if (VMath::mag(vel) > 0.0f) {
-		orientation = QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)) * QMath::angleAxisRotation(atan2(-vel.y, vel.x) * 360 / M_PI, Vec3(0.0f, 0.0f, 1.0f));
+		orientation = QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)) * QMath::angleAxisRotation(-90.0f, Vec3(0.0f, 0.0f, 1.0f)) * QMath::angleAxisRotation((atan2(vel.y, vel.x) * 180 / M_PI), Vec3(0.0f, 0.0f, 1.0f));
+		//orientation = orientation * QMath::angleAxisRotation((atan2(vel.y, vel.x) * 180 / M_PI), Vec3(0.0f, 0.0f, 1.0f));
 	}
 }

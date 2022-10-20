@@ -63,11 +63,20 @@ void AssetManager::ReadManifest() {
 	tinyxml2::XMLElement* cameraData = sceneData->FirstChildElement("Camera");
 	tinyxml2::XMLElement* cameraComponent = cameraData->FirstChildElement("Component");
 	tinyxml2::XMLElement* cameraLocation = cameraComponent->FirstChildElement("Location");
+	tinyxml2::XMLElement* actorOrientation = cameraComponent->FirstChildElement("Orientation");
 	Vec3 location;
 	location.x = cameraLocation->FloatAttribute("x");
 	location.y = cameraLocation->FloatAttribute("y");
 	location.z = cameraLocation->FloatAttribute("z");
-	GetAsset<CameraActor>("Camera")->AddComponent<TransformComponent>(nullptr, location, Quaternion());
+	
+	if (actorOrientation->Attribute("type", "AngleAxis")) {
+		float angle = actorOrientation->FloatAttribute("angle");
+		Vec3 axis;
+		axis.x = actorOrientation->FloatAttribute("axisX");
+		axis.y = actorOrientation->FloatAttribute("axisY");
+		axis.z = actorOrientation->FloatAttribute("axisZ");
+		GetAsset<CameraActor>("Camera")->AddComponent<TransformComponent>(nullptr, location, Quaternion(QMath::angleAxisRotation(angle, axis)));
+	}
 
 	//Light
 	tinyxml2::XMLElement* lightData = sceneData->FirstChildElement("Light");
