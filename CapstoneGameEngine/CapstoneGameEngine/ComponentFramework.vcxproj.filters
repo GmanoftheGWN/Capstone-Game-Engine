@@ -147,6 +147,12 @@
     <ClCompile Include="Pursue.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
+    <ClCompile Include="Flee.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
+    <ClCompile Include="Evade.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Timer.h">
@@ -273,6 +279,12 @@
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
     <ClInclude Include="Pursue.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="Flee.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="Evade.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,6 +9,8 @@
 #include "SteeringBehaviour.h"
 #include "Seek.h"
 #include "Pursue.h"
+#include "Flee.h"
+#include "Evade.h"
 
 using namespace std;
 
