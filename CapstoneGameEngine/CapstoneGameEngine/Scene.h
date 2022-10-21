@@ -2,15 +2,19 @@
 #define SCENE_H
 #include "Actor.h"
 #include "Debug.h"
+#include "SceneManager.h"
 #include "TransformComponent.h"
 #include <unordered_map>
 
 union SDL_Event;
+class SceneManager;
 
 class Scene{
 protected:
 	std::unordered_map<std::string, Ref<Actor>> actorContainer;
 public:	
+	SceneManager* game;
+
 	virtual ~Scene() {}
 	virtual bool OnCreate() = 0;
 	virtual void OnDestroy() = 0;

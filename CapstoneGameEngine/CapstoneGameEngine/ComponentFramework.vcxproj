@@ -168,8 +168,10 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MMath.cpp" />
     <ClCompile Include="Scene0.cpp" />
+    <ClCompile Include="Seek.cpp" />
     <ClCompile Include="ShaderComponent.cpp" />
     <ClCompile Include="StaticBody.cpp" />
+    <ClCompile Include="SteeringBehaviour.cpp" />
     <ClCompile Include="SteeringOutput.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
@@ -205,9 +207,11 @@
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene0.h" />
+    <ClInclude Include="Seek.h" />
     <ClInclude Include="ShaderComponent.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="StaticBody.h" />
+    <ClInclude Include="SteeringBehaviour.h" />
     <ClInclude Include="SteeringOutput.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="tinyxml2.h" />

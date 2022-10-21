@@ -15,25 +15,19 @@ public:
 
 	KinematicBody(
 		Ref<Component> parent_,
-		Vec3 pos_, Quaternion orientation_, 
-		Vec3 vel_, 
-		Vec3 accel_,
-		float mass_,
-		float radius_,
-		float rotation_ = 0.0f,
-		float angular_ = 0.0f,
-		float maxSpeed_ = 1.0f,
-		float maxAcceleration_ = 1.0f,
-		float maxRotation_ = 1.0f,
-		float maxAngular_ = 1.0f
-	) : TransformComponent{ parent_, pos_, orientation_, vel_, accel_, mass_
-		, radius_
-		, rotation_
-		, angular_
+		Vec3 pos_, Quaternion orientation_,
+		float maxSpeed_,
+		float maxRotation_,
+		Vec3 scale_ = Vec3(1.0f, 1.0f, 1.0f)
+	) : TransformComponent{ parent_, pos_, orientation_, Vec3(), Vec3(), 1.0f
+		, 1.0f
+		, 0.0f
+		, 0.0f
 		, maxSpeed_
-		, maxAcceleration_
+		, 4.0f
 		, maxRotation_
-		, maxAngular_
+		, 0.0f
+		, scale_
 	}
 	{}
 

@@ -2,6 +2,8 @@
 #include "Component.h"
 #include "Matrix.h"
 #include "Quaternion.h"
+#include "SteeringOutput.h"
+
 using namespace MATH;
 class TransformComponent : public Component {
 protected:
@@ -38,6 +40,7 @@ public:
 	bool OnCreate();
 	void OnDestroy();
 	void Update(const float deltaTime_);
+	void Update(const float deltaTime_, SteeringOutput* steering_);
 	void ApplyForce(Vec3 force_) { accel = force_ / mass; }
 	Vec3 GetPosition() { return pos; }
 	void SetPosition(Vec3 pos_) { pos = pos_; }

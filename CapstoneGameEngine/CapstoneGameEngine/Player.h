@@ -49,8 +49,6 @@ public:
             , maxAngular_);
     }
 
-    // use the base class versions of getters
-
     bool OnCreate();
     void Render();
     void HandleEvents(const SDL_Event& event);

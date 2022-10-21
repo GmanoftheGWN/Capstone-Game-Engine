@@ -16,4 +16,14 @@ void KinematicBody::Update(float deltaTime, SteeringOutput* steering)
         angular = steering->angular;
     }
 
+    if (VMath::mag(accel) > maxAcceleration) {
+        accel = VMath::normalize(accel) * maxAcceleration;
+    }
+
+    if (angular > maxAngular) {
+        angular = maxAngular;
+    }
+
+
+
 }

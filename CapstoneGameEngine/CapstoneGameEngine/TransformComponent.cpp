@@ -52,7 +52,28 @@ void TransformComponent::Update(const float deltaTime) {
 	pos = pos + vel * deltaTime + accel * (0.5f * deltaTime * deltaTime);
 	vel = vel + accel * deltaTime;
 	// Update orientation
-	orientation = orientation * QMath::angleAxisRotation((rotation * deltaTime) * 360 / M_PI, Vec3(0.0f, 1.0f, 0.0f));
+	orientation = QMath::angleAxisRotation(90, Vec3(1.0f, 0.0f, 0.0f)) * QMath::angleAxisRotation((rotation * deltaTime) * 360 / M_PI, Vec3(0.0f, 1.0f, 0.0f));
+	rotation += angular * deltaTime;
+
+	// Clip to maxspeed, if speed exceeds max
+	if (VMath::mag(vel) > maxSpeed)
+	{
+		vel = VMath::normalize(vel) * maxSpeed;
+	}
+
+	// Clip to maxrotation, if needed
+	if (rotation > maxRotation) rotation = maxRotation;
+
+	// Could introduce dampening, of velocity and/or rotation, to simulate friction
+	//vel -= 0.05 * vel;
+	//rotation -= 0.05 * rotation;
+}
+
+void TransformComponent::Update(const float deltaTime, SteeringOutput* steering_) {
+	pos = pos + vel * deltaTime + accel * (0.5f * deltaTime * deltaTime);
+	vel = vel + accel * deltaTime;
+	// Update orientation
+	orientation = QMath::angleAxisRotation(90, Vec3(1.0f, 0.0f, 0.0f)) * QMath::angleAxisRotation((rotation * deltaTime) * 360 / M_PI, Vec3(0.0f, 1.0f, 0.0f));
 	rotation += angular * deltaTime;
 
 	// Clip to maxspeed, if speed exceeds max

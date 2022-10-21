@@ -122,8 +122,7 @@ void Player::Update(float deltaTime)
 {
     // Update position, call Update from base class
     // Note that would update velocity too, and rotation motion
-    Ref<TransformComponent> transform = this->GetComponent<TransformComponent>();
-    transform->Update(deltaTime);
+    this->GetComponent<TransformComponent>()->Update(deltaTime);
 
     //// This will ensure player body stops at edges
     //float height, width;

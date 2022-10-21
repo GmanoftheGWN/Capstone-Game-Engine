@@ -46,14 +46,14 @@ bool AI_Test::OnCreate() {
 	GetActor<Player>("Player")->OnCreate();
 	GetActor<Player>("Player")->GetComponent<TransformComponent>()->SetTransform(Vec3(), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
 
-	AddActor<Actor>("NPC", nullptr, std::make_shared<Actor>(nullptr));
-	GetActor<Actor>("NPC")->AddComponent<StaticBody>(std::make_shared<StaticBody>(nullptr, Vec3(), Quaternion(), 5.0f, 10.0f));
-	GetActor<Actor>("NPC")->GetComponent<StaticBody>()->SetPosition(Vec3(2.0f, 5.0f, 10.0f));
-	GetActor<Actor>("NPC")->AddComponent<MeshComponent>(assetManager->GetAsset<MeshComponent>("MarioMesh"));
-	GetActor<Actor>("NPC")->AddComponent<MaterialComponent>(assetManager->GetAsset<MaterialComponent>("MarioTexture"));
-	GetActor<Actor>("NPC")->AddComponent<ShaderComponent>(assetManager->GetAsset<ShaderComponent>("TextureShader"));
-	GetActor<Actor>("NPC")->OnCreate();
-	GetActor<Actor>("NPC")->GetComponent<StaticBody>()->SetTransform(Vec3(), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
+	AddActor<Character>("NPC", nullptr, std::make_shared<Character>());
+	GetActor<Character>("NPC")->AddComponent<KinematicBody>(std::make_shared<KinematicBody>(nullptr, Vec3(), Quaternion(), 5.0f, 10.0f));
+	GetActor<Character>("NPC")->GetComponent<KinematicBody>()->SetPosition(Vec3(2.0f, 5.0f, 10.0f));
+	GetActor<Character>("NPC")->AddComponent<MeshComponent>(assetManager->GetAsset<MeshComponent>("MarioMesh"));
+	GetActor<Character>("NPC")->AddComponent<MaterialComponent>(assetManager->GetAsset<MaterialComponent>("MarioTexture"));
+	GetActor<Character>("NPC")->AddComponent<ShaderComponent>(assetManager->GetAsset<ShaderComponent>("TextureShader"));
+	GetActor<Character>("NPC")->OnCreate(this);
+	GetActor<Character>("NPC")->GetComponent<KinematicBody>()->SetTransform(Vec3(), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
 
 	return true;
 }
@@ -126,7 +126,7 @@ void AI_Test::Update(const float deltaTime) {
 
 	// Calculate and apply any steering for npc's
 	//blinky->Update(deltaTime);
-	GetActor<Actor>("NPC")->GetComponent<StaticBody>()->Update(deltaTime, steering);
+	GetActor<Character>("NPC")->Update(deltaTime);
 
 	// Update player
 	game->getPlayer()->Update(deltaTime);

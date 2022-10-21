@@ -133,10 +133,16 @@
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
     <ClCompile Include="KinematicSeek.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Steering</Filter>
     </ClCompile>
     <ClCompile Include="KinematicArrive.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
+    <ClCompile Include="SteeringBehaviour.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
+    <ClCompile Include="Seek.cpp">
+      <Filter>Source Files\Steering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +261,12 @@
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
     <ClInclude Include="KinematicArrive.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="SteeringBehaviour.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="Seek.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
   </ItemGroup>

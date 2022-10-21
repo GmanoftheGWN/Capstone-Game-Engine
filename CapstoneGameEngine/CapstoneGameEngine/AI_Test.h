@@ -11,7 +11,6 @@ union SDL_Event;
 class AI_Test : public Scene {
 public:
 	std::unique_ptr<AssetManager> assetManager;
-	SceneManager* game;
 
 public:
 	explicit AI_Test(SceneManager* game_);
