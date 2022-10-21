@@ -11,6 +11,7 @@
 #include "Pursue.h"
 #include "Flee.h"
 #include "Evade.h"
+#include "CollisionAvoidance.h"
 
 using namespace std;
 

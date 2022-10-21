@@ -4,10 +4,11 @@
 #include "Flee.h"
 class Evade : public Flee
 {
-public:
+protected:
 	float prediction;
 	float maxPrediction;
 
+public:
 	Evade(Actor* character_, Ref<Actor> target_);
 	virtual ~Evade();
 	virtual SteeringOutput* getSteering();

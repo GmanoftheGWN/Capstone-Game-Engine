@@ -4,10 +4,11 @@
 #include "Seek.h"
 class Pursue : public Seek
 {
-public:
+protected:
 	float prediction;
 	float maxPrediction;
 
+public:
 	Pursue(Actor* character_, Ref<Actor> target_);
 	virtual ~Pursue();
 	virtual SteeringOutput* getSteering();

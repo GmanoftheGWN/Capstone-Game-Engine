@@ -45,16 +45,15 @@ bool AI_Test::OnCreate() {
 	GetActor<Player>("Player")->AddComponent<ShaderComponent>(assetManager->GetAsset<ShaderComponent>("TextureShader"));
 	GetActor<Player>("Player")->OnCreate();
 	GetActor<Player>("Player")->GetComponent<TransformComponent>()->SetTransform(Vec3(), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
+	GetActor<Player>("Player")->GetComponent<TransformComponent>()->setMaxAcceleration(12.0f);
 
 	AddActor<Character>("NPC", nullptr, std::make_shared<Character>());
-	GetActor<Character>("NPC")->AddComponent<KinematicBody>(std::make_shared<KinematicBody>(nullptr, Vec3(), Quaternion(), 6.0f, 10.0f));
-	GetActor<Character>("NPC")->GetComponent<KinematicBody>()->SetPosition(Vec3(2.0f, 5.0f, 10.0f));
+	GetActor<Character>("NPC")->AddComponent<KinematicBody>(std::make_shared<KinematicBody>(nullptr, Vec3(0.0f,0.0f,0.0f), Quaternion(), 6.0f, 10.0f));
 	GetActor<Character>("NPC")->AddComponent<MeshComponent>(assetManager->GetAsset<MeshComponent>("MarioMesh"));
 	GetActor<Character>("NPC")->AddComponent<MaterialComponent>(assetManager->GetAsset<MaterialComponent>("MarioTexture"));
 	GetActor<Character>("NPC")->AddComponent<ShaderComponent>(assetManager->GetAsset<ShaderComponent>("TextureShader"));
 	GetActor<Character>("NPC")->OnCreate(this);
-	GetActor<Character>("NPC")->GetComponent<KinematicBody>()->SetTransform(Vec3(), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
-
+	GetActor<Character>("NPC")->GetComponent<KinematicBody>()->SetTransform(Vec3(-10.0f, 0.0f, 0.0f), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
 	return true;
 }
 

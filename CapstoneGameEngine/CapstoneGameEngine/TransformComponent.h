@@ -54,6 +54,7 @@ public:
 	float getAngular() { return angular; }
 	float getMaxSpeed() { return maxSpeed; }
 	float getMaxAcceleration() { return maxAcceleration; }
+	void setMaxAcceleration(float maxAcceleration_) { maxAcceleration = maxAcceleration_; }
 	float getMaxRotation() { return maxRotation; }
 	float getMaxAngular() { return maxAngular; }
 	Vec3 GetScale() { return scale; }

@@ -34,7 +34,14 @@ void Character::Update(float deltaTime)
 void Character::steerToSeekPlayer(SteeringOutput* steering) {
 	vector<SteeringOutput*> steering_outputs;
 
+	/*vector<Ref<Actor>> targets;
+	targets.push_back(scene->game->getPlayer());
+	SteeringBehaviour* steering_algorithm = new CollisionAvoidance(this, targets);*/
+
+	/*SteeringBehaviour* steering_algorithm = new Pursue(this, scene->game->getPlayer());*/
+
 	SteeringBehaviour* steering_algorithm = new Evade(this, scene->game->getPlayer());
+
 	steering_outputs.push_back(steering_algorithm->getSteering());
 
 	for (unsigned i = 0; i < steering_outputs.size(); i++) {
