@@ -144,6 +144,9 @@
     <ClCompile Include="Seek.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
+    <ClCompile Include="Pursue.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Timer.h">
@@ -267,6 +270,9 @@
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
     <ClInclude Include="Seek.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="Pursue.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
   </ItemGroup>

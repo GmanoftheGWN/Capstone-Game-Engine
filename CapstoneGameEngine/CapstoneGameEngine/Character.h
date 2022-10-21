@@ -8,6 +8,7 @@
 #include "KinematicBody.h"
 #include "SteeringBehaviour.h"
 #include "Seek.h"
+#include "Pursue.h"
 
 using namespace std;
 

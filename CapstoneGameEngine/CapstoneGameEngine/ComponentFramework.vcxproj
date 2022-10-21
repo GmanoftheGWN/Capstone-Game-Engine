@@ -162,6 +162,7 @@
     <ClCompile Include="MaterialComponent.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Pursue.cpp" />
     <ClCompile Include="QMath.cpp" />
     <ClCompile Include="Scene1.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -198,6 +199,7 @@
     <ClInclude Include="MaterialComponent.h" />
     <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Pursue.h" />
     <ClInclude Include="QMath.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="Scene1.h" />
