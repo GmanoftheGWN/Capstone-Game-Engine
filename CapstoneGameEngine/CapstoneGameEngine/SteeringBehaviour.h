@@ -5,16 +5,24 @@
 #include "Actor.h"
 #include "KinematicBody.h"
 #include "SteeringOutput.h"
+#include "KinematicSteeringOutput.h"
 
-class SteeringBehaviour
+class SteeringBehaviour : public Component
 {
 protected:
 	SteeringOutput* result;
-	Actor* character;
+	KinematicSteeringOutput* kinematicResult;
+	Ref<Actor> character;
 public:
 	SteeringBehaviour();
 	virtual SteeringOutput* getSteering() = 0;
-	~SteeringBehaviour();
+	virtual KinematicSteeringOutput* getKinematicSteering() = 0;
+	virtual ~SteeringBehaviour();
+
+	virtual bool OnCreate();
+	virtual void OnDestroy();
+	virtual void Update(const float deltaTime_);
+	virtual void Render()const;
 };
 
 #endif //STEERING_BEHAVIOUR_H

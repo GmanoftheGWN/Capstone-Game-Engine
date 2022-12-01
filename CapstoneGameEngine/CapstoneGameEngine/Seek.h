@@ -9,7 +9,7 @@ protected:
 	Ref<Actor> target;
 
 public:
-	Seek(Actor* character_, Ref<Actor> target_);
+	Seek(Ref<Actor> character_, Ref<Actor> target_);
 	virtual ~Seek();
 	virtual SteeringOutput* getSteering();
 };

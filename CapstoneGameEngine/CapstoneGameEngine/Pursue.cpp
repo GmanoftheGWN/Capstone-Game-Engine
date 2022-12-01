@@ -1,6 +1,6 @@
 #include "Pursue.h"
 
-Pursue::Pursue(Actor* character_, Ref<Actor> target_) : Seek{ character_, target_ } {
+Pursue::Pursue(Ref<Actor> character_, Ref<Actor> target_) : Seek{ character_, target_ } {
 	character = character_;
 	target = target_;
 	prediction = maxPrediction = 10.0f;

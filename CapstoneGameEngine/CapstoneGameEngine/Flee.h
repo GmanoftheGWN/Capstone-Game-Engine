@@ -9,7 +9,7 @@ protected:
 	Ref<Actor> target;
 
 public:
-	Flee(Actor* character_, Ref<Actor> target_);
+	Flee(Ref<Actor> character_, Ref<Actor> target_);
 	virtual ~Flee();
 	virtual SteeringOutput* getSteering();
 };

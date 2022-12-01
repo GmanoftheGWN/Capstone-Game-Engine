@@ -9,7 +9,7 @@ protected:
 	float maxPrediction;
 
 public:
-	Pursue(Actor* character_, Ref<Actor> target_);
+	Pursue(Ref<Actor> character_, Ref<Actor> target_);
 	virtual ~Pursue();
 	virtual SteeringOutput* getSteering();
 };

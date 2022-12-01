@@ -8,18 +8,14 @@ bool Character::OnCreate(Scene* scene_)
 	return true;
 }
 
-void Character::Update(float deltaTime, KinematicSteeringOutput* steering)
+void Character::Update(float deltaTime)
 {
-	//// create a new overall steering output
-	//SteeringOutput* steering;
-	//steering = new SteeringOutput();
+	// create a new overall steering output
+	KinematicSteeringOutput* steering;
+	steering = new KinematicSteeringOutput();
 
-	//// set the target for steering; target is used by the steerTo... functions
-	//// (often the target is the Player)
-	//Ref<Actor> target = scene->game->getPlayer();
-
-	//// using the target, calculate and set values in the overall steering output
-	//steerToSeekPlayer(steering);
+	// using the target, calculate and set values in the overall steering output
+	steerToSeekTarget(steering);
 
 	// apply the steering to the equations of motion
 	this->GetComponent<KinematicBody>()->Update(deltaTime, steering);
@@ -31,27 +27,20 @@ void Character::Update(float deltaTime, KinematicSteeringOutput* steering)
 	}
 }
 
-void Character::steerToSeekPlayer(SteeringOutput* steering) {
-	vector<SteeringOutput*> steering_outputs;
+void Character::steerToSeekTarget(KinematicSteeringOutput* steering) {
+	vector<KinematicSteeringOutput*> steering_outputs;
 
-	vector<Ref<Actor>> targets;
-	targets.push_back(scene->game->getPlayer());
-	SteeringBehaviour* steering_algorithm = new CollisionAvoidance(this, targets);
-
-	/*SteeringBehaviour* steering_algorithm = new Pursue(this, scene->game->getPlayer());*/
-
-	/*SteeringBehaviour* steering_algorithm = new Evade(this, scene->game->getPlayer());*/
-
-	steering_outputs.push_back(steering_algorithm->getSteering());
+	if(this->GetComponent<FollowAPath>()) { 
+		steering_outputs.push_back(this->GetComponent<FollowAPath>()->getKinematicSteering()); 
+	}
+	if (this->GetComponent<FollowAPath>()) {
+		steering_outputs.push_back(this->GetComponent<FollowAPath>()->getKinematicSteering());
+	}
 
 	for (unsigned i = 0; i < steering_outputs.size(); i++) {
 		if (steering_outputs[i]) {
 			*steering += *steering_outputs[i];
 		}
-	}
-
-	if (steering_algorithm) {
-		delete steering_algorithm;
 	}
 }
 

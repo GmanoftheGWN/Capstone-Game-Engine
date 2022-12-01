@@ -10,8 +10,9 @@ class FollowAPath : public KinematicArrive {
 
 	public:
 		FollowAPath(Ref<Actor> character_, Ref<Actor> target_, float radius_, Path* path_);
-		~FollowAPath();
-		KinematicSteeringOutput* getSteering();
+		virtual ~FollowAPath();
+		virtual SteeringOutput* getSteering();
+		virtual KinematicSteeringOutput* getKinematicSteering();
 };
 
 #endif //FollowAPath.h

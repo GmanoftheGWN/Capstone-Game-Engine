@@ -11,6 +11,14 @@ public:
 
 	KinematicSteeringOutput();
 	KinematicSteeringOutput(MATH::Vec3 velocity_, float rotation_);
+	inline const KinematicSteeringOutput operator + (const KinematicSteeringOutput& v) const {
+		return KinematicSteeringOutput(velocity + v.velocity, rotation + v.rotation);
+	}
+	inline KinematicSteeringOutput& operator += (const KinematicSteeringOutput& v) {
+		velocity += v.velocity;
+		rotation += v.rotation;
+		return *this;
+	}
 };
 
 #endif //KinematicSteeringOutput.h

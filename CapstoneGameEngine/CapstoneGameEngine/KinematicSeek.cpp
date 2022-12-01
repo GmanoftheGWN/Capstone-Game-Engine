@@ -4,21 +4,21 @@
 KinematicSeek::KinematicSeek(Ref<Actor> character_, Ref<Actor> target_) {
 	character = character_;
 	target = target_;
-	result = new KinematicSteeringOutput();
+	kinematicResult = new KinematicSteeringOutput();
 }
 
 KinematicSeek::~KinematicSeek() {
-	if (result) { delete result; }
+	if (kinematicResult) { delete kinematicResult; }
 }
 
-KinematicSteeringOutput* KinematicSeek::getSteering() {
-	result->velocity = target->GetComponent<TransformComponent>()->GetPosition() - character->GetComponent<TransformComponent>()->GetPosition();
+KinematicSteeringOutput* KinematicSeek::getKinematicSteering() {
+	kinematicResult->velocity = target->GetComponent<TransformComponent>()->GetPosition() - character->GetComponent<TransformComponent>()->GetPosition();
 
 	//go full speed along this direction
-	result->velocity = VMath::normalize(result->velocity);
-	result->velocity = character->GetComponent<TransformComponent>()->getMaxSpeed() * result->velocity;
+	kinematicResult->velocity = VMath::normalize(kinematicResult->velocity);
+	kinematicResult->velocity = character->GetComponent<TransformComponent>()->getMaxSpeed() * kinematicResult->velocity;
 
-	result->rotation = 0.0f;
-	return result;
+	kinematicResult->rotation = 0.0f;
+	return kinematicResult;
 
 }

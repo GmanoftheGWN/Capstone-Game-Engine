@@ -9,7 +9,7 @@ protected:
 	float maxPrediction;
 
 public:
-	Evade(Actor* character_, Ref<Actor> target_);
+	Evade(Ref<Actor> character_, Ref<Actor> target_);
 	virtual ~Evade();
 	virtual SteeringOutput* getSteering();
 };

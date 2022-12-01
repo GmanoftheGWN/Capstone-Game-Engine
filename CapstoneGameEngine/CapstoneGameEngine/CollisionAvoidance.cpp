@@ -1,6 +1,6 @@
 #include "CollisionAvoidance.h"
 
-CollisionAvoidance::CollisionAvoidance(Actor* character_, std::vector<Ref<Actor>> targets_) : Seek{character_, nullptr}, targets(targets_), radius(1.0f) {
+CollisionAvoidance::CollisionAvoidance(Ref<Actor> character_, std::vector<Ref<Actor>> targets_) : Seek{character_, nullptr}, targets(targets_), radius(1.0f) {
 }
 
 CollisionAvoidance::~CollisionAvoidance()

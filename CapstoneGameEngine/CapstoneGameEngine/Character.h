@@ -12,6 +12,8 @@
 #include "Flee.h"
 #include "Evade.h"
 #include "CollisionAvoidance.h"
+#include "KinematicArrive.h"
+#include "FollowAPath.h"
 
 using namespace std;
 
@@ -55,10 +57,10 @@ public:
 	bool OnCreate(Scene* scene_);
 	void OnDestroy() {};
 
-	void Update(float time, KinematicSteeringOutput* steering);
+	void Update(float time);
 	void HandleEvents(const SDL_Event& event);
 	void render();
-    void steerToSeekPlayer(SteeringOutput* steering);
+    void steerToSeekTarget(KinematicSteeringOutput* steering);
 
 };
 

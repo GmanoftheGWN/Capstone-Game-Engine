@@ -1,6 +1,6 @@
 #include "Evade.h"
 
-Evade::Evade(Actor* character_, Ref<Actor> target_) : Flee{ character_, target_ } {
+Evade::Evade(Ref<Actor> character_, Ref<Actor> target_) : Flee{ character_, target_ } {
 	character = character_;
 	target = target_;
 	prediction = maxPrediction = 10.0f;

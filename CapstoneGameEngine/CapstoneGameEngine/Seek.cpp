@@ -1,6 +1,6 @@
 #include "Seek.h"
 
-Seek::Seek(Actor* character_, Ref<Actor> target_) {
+Seek::Seek(Ref<Actor> character_, Ref<Actor> target_) {
 	character = character_;
 	target = target_;
 }

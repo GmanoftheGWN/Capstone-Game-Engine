@@ -11,7 +11,7 @@ protected:
 	std::vector<Ref<Actor>> targets;
 	float radius;
 public:
-	CollisionAvoidance(Actor* character_, std::vector<Ref<Actor>> targets_); 
+	CollisionAvoidance(Ref<Actor> character_, std::vector<Ref<Actor>> targets_);
 	virtual ~CollisionAvoidance();
 	virtual SteeringOutput* getSteering();
 };

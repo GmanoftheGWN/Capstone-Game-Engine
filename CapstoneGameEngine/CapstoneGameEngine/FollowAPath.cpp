@@ -10,7 +10,7 @@ FollowAPath::~FollowAPath()
 {
 }
 
-KinematicSteeringOutput* FollowAPath::getSteering() {
+KinematicSteeringOutput* FollowAPath::getKinematicSteering() {
 
     Vec3 target_position;
 
@@ -28,6 +28,10 @@ KinematicSteeringOutput* FollowAPath::getSteering() {
 
     target->GetComponent<TransformComponent>()->SetPosition(target_position);
 
-    return KinematicArrive::getSteering();
+    return KinematicArrive::getKinematicSteering();
 
+}
+
+SteeringOutput* FollowAPath::getSteering() {
+    return nullptr;
 }

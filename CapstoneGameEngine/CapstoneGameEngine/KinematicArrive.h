@@ -4,21 +4,21 @@
 #include "Vector.h"
 #include "VMath.h"
 #include "Actor.h"
+#include "SteeringBehaviour.h"
 #include "KinematicSteeringOutput.h"
 
-class KinematicArrive
+class KinematicArrive : public SteeringBehaviour
 {
 protected:
-	KinematicSteeringOutput* result;
-	Ref<Actor> character;
 	Ref<Actor> target;
 	float radius;
 	float timeToTarget;
 
 public:
 	KinematicArrive(Ref<Actor> character_, Ref<Actor> target_, float radius_);
-	~KinematicArrive();
-	KinematicSteeringOutput* getSteering();
+	virtual ~KinematicArrive();
+	virtual SteeringOutput* getSteering();
+	virtual KinematicSteeringOutput* getKinematicSteering();
 
 };
 

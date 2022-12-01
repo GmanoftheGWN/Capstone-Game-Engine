@@ -1,6 +1,6 @@
 #include "Flee.h"
 
-Flee::Flee(Actor* character_, Ref<Actor> target_) {
+Flee::Flee(Ref<Actor> character_, Ref<Actor> target_) {
 	character = character_;
 	target = target_;
 }

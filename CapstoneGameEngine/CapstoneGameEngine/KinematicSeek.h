@@ -5,18 +5,19 @@
 #include "VMath.h"
 #include "Actor.h"
 #include "KinematicSteeringOutput.h"
+#include "SteeringBehaviour.h"
 
-class KinematicSeek
+class KinematicSeek : public SteeringBehaviour
 {
 private:
-	KinematicSteeringOutput* result;
+	KinematicSteeringOutput* kinematicResult;
 	Ref<Actor> character;
 	Ref<Actor> target;
 
 public:
 	KinematicSeek(Ref<Actor> character_, Ref<Actor> target_);
-	~KinematicSeek();
-	KinematicSteeringOutput* getSteering();
+	virtual ~KinematicSeek();
+	KinematicSteeringOutput* getKinematicSteering();
 
 };
 

@@ -87,6 +87,11 @@ bool AI_Test::OnCreate() {
 	std::reverse(pathNodes.begin(), pathNodes.end());
 	path = new Path(pathNodes);
 
+	FollowAPath* steering_algorithm;
+	std::shared_ptr target = std::make_shared<Actor>(nullptr);
+	target->AddComponent<TransformComponent>(nullptr, Vec3(), Quaternion());
+	GetActor<Character>("NPC")->AddComponent<FollowAPath>(GetActor<Actor>("NPC"), target, 1.0f, path);
+
 	return true;
 }
 
@@ -231,16 +236,10 @@ void AI_Test::HandleEvents(const SDL_Event& sdlEvent) {
 }
 
 void AI_Test::Update(const float deltaTime) {
-	FollowAPath* steering_algorithm;
-	std::shared_ptr target = std::make_shared<Actor>(nullptr);
-	target->AddComponent<TransformComponent>(nullptr, Vec3(), Quaternion());
-	steering_algorithm = new FollowAPath(GetActor<Actor>("NPC"), target, 1.0f, path);
-	KinematicSteeringOutput* steering;
-	steering = steering_algorithm->getSteering();
 
 	// Calculate and apply any steering for npc's
 	//blinky->Update(deltaTime);
-	GetActor<Character>("NPC")->GetComponent<KinematicBody>()->Update(deltaTime, steering);
+	GetActor<Character>("NPC")->Update(deltaTime);
 
 	// Update player
 	game->getPlayer()->Update(deltaTime);
