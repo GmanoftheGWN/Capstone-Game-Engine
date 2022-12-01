@@ -13,6 +13,8 @@ class FollowAPath : public KinematicArrive {
 		virtual ~FollowAPath();
 		virtual SteeringOutput* getSteering();
 		virtual KinematicSteeringOutput* getKinematicSteering();
+
+		Path* getPath() { return path; }
 };
 
 #endif //FollowAPath.h

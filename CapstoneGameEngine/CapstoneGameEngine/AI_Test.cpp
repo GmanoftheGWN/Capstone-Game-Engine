@@ -76,8 +76,8 @@ bool AI_Test::OnCreate() {
 
 	calculateConnectionWeights();
 	
-	int startNode = 300;
-	int goalNode = 44;
+	int startNode = 370;
+	int goalNode = 82;
 
 	vector<Node*> pathNodes;
 	map<int, int> nodeNumbers = graph->AStar(startNode, goalNode);
@@ -90,7 +90,7 @@ bool AI_Test::OnCreate() {
 	FollowAPath* steering_algorithm;
 	std::shared_ptr target = std::make_shared<Actor>(nullptr);
 	target->AddComponent<TransformComponent>(nullptr, Vec3(), Quaternion());
-	GetActor<Character>("NPC")->AddComponent<FollowAPath>(GetActor<Actor>("NPC"), target, 1.0f, path);
+	GetActor<Character>("NPC")->AddComponent<FollowAPath>(GetActor<Actor>("NPC"), target, 2.0f, path);
 
 	return true;
 }
@@ -243,6 +243,31 @@ void AI_Test::Update(const float deltaTime) {
 
 	// Update player
 	game->getPlayer()->Update(deltaTime);
+
+	//Example AI wandering
+	if (GetActor<Character>("NPC")->GetComponent<FollowAPath>()) {
+		if (GetActor<Character>("NPC")->GetComponent<FollowAPath>()->getPath()->CurrentNode ==
+			GetActor<Character>("NPC")->GetComponent<FollowAPath>()->getPath()->nodes.size() - 1) 
+		{
+			int startNode = GetActor<Character>("NPC")->GetComponent<FollowAPath>()->getPath()->CurrentNode;
+			int goalNode = std::rand() % 499;
+
+			vector<Node*> pathNodes;
+			map<int, int> nodeNumbers = graph->AStar(startNode, goalNode);
+			for (int i = goalNode; i != startNode; i = nodeNumbers[i]) {
+				pathNodes.push_back(nodes[i]);
+			}
+			std::reverse(pathNodes.begin(), pathNodes.end());
+			path = new Path(pathNodes);
+
+			FollowAPath* steering_algorithm;
+			std::shared_ptr target = std::make_shared<Actor>(nullptr);
+			target->AddComponent<TransformComponent>(nullptr, Vec3(), Quaternion());
+			GetActor<Character>("NPC")->RemoveComponent<FollowAPath>();
+			GetActor<Character>("NPC")->AddComponent<FollowAPath>(GetActor<Actor>("NPC"), target, 2.0f, path);
+		}
+	}
+
 }
 
 void AI_Test::Render() const {

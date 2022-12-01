@@ -60,7 +60,7 @@ public:
 	template<typename ComponentTemplate>
 	void RemoveComponent() {
 		for (unsigned int i = 0; i < components.size(); i++) {
-			if (dynamic_cast<ComponentTemplate*>(components[i]) != nullptr) {
+			if (dynamic_cast<ComponentTemplate*>(components[i].get()) != nullptr) {
 				///This removes the component from the vector list
 				components.erase(components.begin() + i);
 				break;
