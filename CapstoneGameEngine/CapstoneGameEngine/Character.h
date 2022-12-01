@@ -55,7 +55,7 @@ public:
 	bool OnCreate(Scene* scene_);
 	void OnDestroy() {};
 
-	void Update(float time);
+	void Update(float time, KinematicSteeringOutput* steering);
 	void HandleEvents(const SDL_Event& event);
 	void render();
     void steerToSeekPlayer(SteeringOutput* steering);

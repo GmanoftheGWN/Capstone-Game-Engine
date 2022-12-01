@@ -2,6 +2,9 @@
 #define AI_TEST_H
 #include "Scene.h"
 #include "AssetManager.h"
+#include "Graph.h"
+#include "Tile.h"
+#include "Path.h"
 
 using namespace MATH;
 
@@ -11,6 +14,21 @@ union SDL_Event;
 class AI_Test : public Scene {
 public:
 	std::unique_ptr<AssetManager> assetManager;
+
+	float planeX = 50.0f;
+	float planeY = 40.0f;
+
+	Graph* graph;
+	vector<Node*> nodes;
+
+	vector<vector <Tile* >> tiles;
+	float tileWidth = 2.0;
+	float tileHeight = 2.0f;
+
+	void createTiles(int rows, int cols);
+	void calculateConnectionWeights();
+
+	Path* path;
 
 public:
 	explicit AI_Test(SceneManager* game_);

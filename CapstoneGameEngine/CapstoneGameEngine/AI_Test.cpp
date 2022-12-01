@@ -1,6 +1,7 @@
 #include <glew.h>
 #include <iostream>
 #include <SDL.h>
+#include <algorithm>
 #include "Debug.h"
 #include "AI_Test.h"
 #include "MMath.h"
@@ -15,11 +16,14 @@
 #include "MaterialComponent.h"
 #include "StaticBody.h"
 #include "KinematicArrive.h"
+#include "FollowAPath.h"
 #include "Debug.h"
 
 AI_Test::AI_Test(SceneManager* game_) {
 	Debug::Info("Created AI_Test: ", __FILE__, __LINE__);
 	game = game_;
+	graph = NULL;
+	nodes = {};
 }
 
 AI_Test::~AI_Test() {
@@ -44,7 +48,7 @@ bool AI_Test::OnCreate() {
 	GetActor<Player>("Player")->AddComponent<MaterialComponent>(assetManager->GetAsset<MaterialComponent>("MarioTexture"));
 	GetActor<Player>("Player")->AddComponent<ShaderComponent>(assetManager->GetAsset<ShaderComponent>("TextureShader"));
 	GetActor<Player>("Player")->OnCreate();
-	GetActor<Player>("Player")->GetComponent<TransformComponent>()->SetTransform(Vec3(), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
+	GetActor<Player>("Player")->GetComponent<TransformComponent>()->SetTransform(Vec3(0.0f,0.0f,1.25f), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
 	GetActor<Player>("Player")->GetComponent<TransformComponent>()->setMaxAcceleration(12.0f);
 
 	AddActor<Character>("NPC", nullptr, std::make_shared<Character>());
@@ -53,8 +57,117 @@ bool AI_Test::OnCreate() {
 	GetActor<Character>("NPC")->AddComponent<MaterialComponent>(assetManager->GetAsset<MaterialComponent>("MarioTexture"));
 	GetActor<Character>("NPC")->AddComponent<ShaderComponent>(assetManager->GetAsset<ShaderComponent>("TextureShader"));
 	GetActor<Character>("NPC")->OnCreate(this);
-	GetActor<Character>("NPC")->GetComponent<KinematicBody>()->SetTransform(Vec3(-10.0f, 0.0f, 0.0f), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
+	GetActor<Character>("NPC")->GetComponent<KinematicBody>()->SetTransform(Vec3(-10.0f, 0.0f, 1.25f), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
+	
+	// create a tile with a node
+	int cols = ceil(planeX / tileWidth);
+	int rows = ceil(planeY / tileHeight);
+	createTiles(rows, cols);
+	// this createTiles is also going to populate nodes list
+
+
+	//create the graph, an empty graph
+	graph = new Graph();
+	if (!graph->OnCreate(nodes))
+	{
+		printf("graph OnCreate failed. \n");
+		return false;
+	}
+
+	calculateConnectionWeights();
+	
+	int startNode = 300;
+	int goalNode = 44;
+
+	vector<Node*> pathNodes;
+	map<int, int> nodeNumbers = graph->AStar(startNode, goalNode);
+	for (int i = goalNode; i != startNode; i = nodeNumbers[i]) {
+		pathNodes.push_back(nodes[i]);
+	}
+	std::reverse(pathNodes.begin(), pathNodes.end());
+	path = new Path(pathNodes);
+
 	return true;
+}
+
+void AI_Test::createTiles(int rows, int cols)
+{
+	tiles.resize(rows);
+	for (int i = 0; i < rows; i++)
+	{
+		tiles[i].resize(cols);
+	}
+
+	Node* n;
+	Tile* t;
+	int i, j, label;
+	i = 0;
+	j = 0;
+	label = 0;
+
+	for (float y = (0.5f * tileHeight) - planeY / 2; y < planeY / 2; y += tileHeight)
+	{
+		//do stuff for a row, where y stays constant
+		for (float x = (0.5f * tileWidth) - planeX / 2; x < planeX / 2; x += tileWidth)
+		{
+			n = new Node(label, Vec3(x, y, 0.0f));
+			t = new Tile(n, tileWidth, tileHeight, this);
+			t->AddComponent<TransformComponent>(nullptr, Vec3(x, y, 0.0f), Quaternion(), Vec3(0.15f,0.15f,0.15f));
+			n->setTile(t);
+			nodes.push_back(n);
+			tiles[i][j] = t;
+			tiles[i][j]->OnCreate();
+
+			label++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
+
+void AI_Test::calculateConnectionWeights()
+{
+	int rows = tiles.size();
+	int cols = tiles[0].size();
+
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			//                 i+1,j
+			//   i,j-1           i,j        i,j+1
+			//                 i-1,j
+
+			int from = tiles[i][j]->getNode()->getLabel();
+
+			//left is i, j-1
+			if (j > 0)
+			{
+				int to = tiles[i][j - 1]->getNode()->getLabel();
+				graph->addWeightConnection(from, to, tileWidth);
+			}
+			//right is i,j+1
+			if (j < cols - 1)
+			{
+				int to = tiles[i][j + 1]->getNode()->getLabel();
+				graph->addWeightConnection(from, to, tileWidth);
+			}
+			//above is i+1,j
+			if (i < rows - 1)
+			{
+				int to = tiles[i + 1][j]->getNode()->getLabel();
+				graph->addWeightConnection(from, to, tileHeight);
+			}
+			//below is i-1,j
+			if (i > 0)
+			{
+				int to = tiles[i - 1][j]->getNode()->getLabel();
+				graph->addWeightConnection(from, to, tileHeight);
+			}
+
+		}
+	}
 }
 
 void AI_Test::OnDestroy() {
@@ -118,14 +231,16 @@ void AI_Test::HandleEvents(const SDL_Event& sdlEvent) {
 }
 
 void AI_Test::Update(const float deltaTime) {
-	KinematicArrive* steering_algorithm;
-	steering_algorithm = new KinematicArrive(GetActor<Actor>("NPC"), GetActor<Player>("Player"), 7.0f);
+	FollowAPath* steering_algorithm;
+	std::shared_ptr target = std::make_shared<Actor>(nullptr);
+	target->AddComponent<TransformComponent>(nullptr, Vec3(), Quaternion());
+	steering_algorithm = new FollowAPath(GetActor<Actor>("NPC"), target, 1.0f, path);
 	KinematicSteeringOutput* steering;
 	steering = steering_algorithm->getSteering();
 
 	// Calculate and apply any steering for npc's
 	//blinky->Update(deltaTime);
-	GetActor<Character>("NPC")->Update(deltaTime);
+	GetActor<Character>("NPC")->GetComponent<KinematicBody>()->Update(deltaTime, steering);
 
 	// Update player
 	game->getPlayer()->Update(deltaTime);
@@ -143,6 +258,22 @@ void AI_Test::Render() const {
 			glUniformMatrix4fv(actor.second->GetComponent<ShaderComponent>()->GetUniformID("modelMatrix"), 1, GL_FALSE, actor.second->GetComponent<TransformComponent>()->GetTransformMatrix());
 			glBindTexture(GL_TEXTURE_2D, actor.second->GetComponent<MaterialComponent>()->getTextureID());
 			actor.second->GetComponent<MeshComponent>()->Render(GL_TRIANGLES);
+		}
+	}
+
+	int rows = tiles.size();
+	int cols = tiles[0].size();
+
+	for (int i = 0; i < rows; i++)
+	{
+		for (int j = 0; j < cols; j++)
+		{
+			if (tiles[i][j]->GetComponent<ShaderComponent>()) {
+				glUseProgram(tiles[i][j]->GetComponent<ShaderComponent>()->GetProgram());
+				glUniformMatrix4fv(tiles[i][j]->GetComponent<ShaderComponent>()->GetUniformID("modelMatrix"), 1, GL_FALSE, tiles[i][j]->GetComponent<TransformComponent>()->GetTransformMatrix());
+				glBindTexture(GL_TEXTURE_2D, tiles[i][j]->GetComponent<MaterialComponent>()->getTextureID());
+				tiles[i][j]->GetComponent<MeshComponent>()->Render(GL_TRIANGLES);
+			}
 		}
 	}
 

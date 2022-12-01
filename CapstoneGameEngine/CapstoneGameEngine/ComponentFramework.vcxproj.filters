@@ -49,6 +49,12 @@
     <Filter Include="Source Files\Steering">
       <UniqueIdentifier>{70482075-b931-4d51-be16-cca4b2e4f03c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Pathfinding">
+      <UniqueIdentifier>{da9011d6-c144-4341-937c-d67218eaa9f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Pathfinding">
+      <UniqueIdentifier>{3b57b173-6eb3-422c-89b2-a000f64638f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -153,8 +159,23 @@
     <ClCompile Include="Evade.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>Source Files\Pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Source Files\Pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Source Files\Pathfinding</Filter>
+    </ClCompile>
     <ClCompile Include="CollisionAvoidance.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
+    <ClCompile Include="FollowAPath.cpp">
+      <Filter>Source Files\Pathfinding</Filter>
+    </ClCompile>
+    <ClCompile Include="Path.cpp">
+      <Filter>Source Files\Pathfinding</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -290,8 +311,23 @@
     <ClInclude Include="Evade.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Header Files\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Header Files\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Header Files\Pathfinding</Filter>
+    </ClInclude>
     <ClInclude Include="CollisionAvoidance.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowAPath.h">
+      <Filter>Header Files\Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="Path.h">
+      <Filter>Header Files\Pathfinding</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

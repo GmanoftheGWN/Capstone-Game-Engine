@@ -3,7 +3,7 @@
   <Scene0>
     <Camera>
       <Component name ="Transform">
-        <Location x="0.0" y="0.0" z="-40.0"/>
+        <Location x="0.0" y="0.0" z="-60.0"/>
 		  <Orientation type="AngleAxis" angle="-60.0" axisX="1.0" axisY="0.0" axisZ="0.0"/>
       </Component>
       <Projection fovy="0.0" near="0.0" far="0.0"/>

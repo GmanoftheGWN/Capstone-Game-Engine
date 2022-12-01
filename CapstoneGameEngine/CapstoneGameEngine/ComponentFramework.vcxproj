@@ -157,6 +157,8 @@
     <ClCompile Include="EMath.cpp" />
     <ClCompile Include="Evade.cpp" />
     <ClCompile Include="Flee.cpp" />
+    <ClCompile Include="FollowAPath.cpp" />
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="KinematicArrive.cpp" />
     <ClCompile Include="KinematicBody.cpp" />
     <ClCompile Include="KinematicSeek.cpp" />
@@ -164,6 +166,8 @@
     <ClCompile Include="LightActor.cpp" />
     <ClCompile Include="MaterialComponent.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Path.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Pursue.cpp" />
     <ClCompile Include="QMath.cpp" />
@@ -177,6 +181,7 @@
     <ClCompile Include="StaticBody.cpp" />
     <ClCompile Include="SteeringBehaviour.cpp" />
     <ClCompile Include="SteeringOutput.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
@@ -197,6 +202,8 @@
     <ClInclude Include="Euler.h" />
     <ClInclude Include="Evade.h" />
     <ClInclude Include="Flee.h" />
+    <ClInclude Include="FollowAPath.h" />
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="KinematicArrive.h" />
     <ClInclude Include="KinematicBody.h" />
     <ClInclude Include="KinematicSeek.h" />
@@ -204,6 +211,8 @@
     <ClInclude Include="LightActor.h" />
     <ClInclude Include="MaterialComponent.h" />
     <ClInclude Include="MeshComponent.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="Path.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pursue.h" />
     <ClInclude Include="QMath.h" />
@@ -221,6 +230,7 @@
     <ClInclude Include="StaticBody.h" />
     <ClInclude Include="SteeringBehaviour.h" />
     <ClInclude Include="SteeringOutput.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="tiny_obj_loader.h" />

@@ -2,7 +2,7 @@
 #define KINEMATIC_BODY_H
 
 #include "TransformComponent.h"
-#include "SteeringOutput.h"
+#include "KinematicSteeringOutput.h"
 
 class KinematicBody :
 	public TransformComponent
@@ -31,7 +31,7 @@ public:
 	}
 	{}
 
-	void Update(float deltaTime, SteeringOutput* steering);
+	void Update(float deltaTime, KinematicSteeringOutput* steering);
 };
 
 #endif

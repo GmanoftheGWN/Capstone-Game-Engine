@@ -8,7 +8,7 @@
 
 class KinematicArrive
 {
-private:
+protected:
 	KinematicSteeringOutput* result;
 	Ref<Actor> character;
 	Ref<Actor> target;
