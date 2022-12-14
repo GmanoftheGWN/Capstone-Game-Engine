@@ -9,6 +9,8 @@
 
 #include "Scene.h"
 
+class Node;
+
 class Tile : public Actor
 {
 private:

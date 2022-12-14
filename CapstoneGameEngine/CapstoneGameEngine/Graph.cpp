@@ -61,9 +61,11 @@ vector<int> Graph::neighbours(int fromNode)
 	vector<int> result = {};
 	for (int j = 0; j < numNodes(); j++)
 	{
-		if (cost[fromNode][j] > 0.0f)
-		{
-			result.push_back(j);
+		if (!node[j]->getObstructed()) {
+			if (cost[fromNode][j] > 0.0f)
+			{
+				result.push_back(j);
+			}
 		}
 	}
 	return result;
@@ -128,17 +130,18 @@ map<int, int> Graph::AStar(
 		}
 		// for the neighbours of current node
 		vector<int> nodeNeighbours = neighbours(current);
-		for (int i = 0; i < nodeNeighbours.size(); i++)
+		//for (int i = 0; i < nodeNeighbours.size(); i++)
+		for(int next : neighbours(current))
 		{
 			// calculate new_cost
-			new_cost = cost_so_far[current] + cost[current][nodeNeighbours[i]];
+			new_cost = cost_so_far[current] + cost[current][next];
 			// if neighbour is not in cost_so_far OR new_cost is lower
-			if (cost_so_far.find(nodeNeighbours[i]) == cost_so_far.end() || new_cost < cost_so_far[nodeNeighbours[i]])
+			if (cost_so_far.find(next) == cost_so_far.end() || new_cost < cost_so_far[next])
 			{
 				// found a better path so update structure (look at pseudocode algorithm)
-				cost_so_far[nodeNeighbours[i]] = new_cost;
-				frontier.push(*new NodeAndPriority(nodeNeighbours[i], new_cost + Heurisitic(goalNode, nodeNeighbours[i])));
-				came_from[nodeNeighbours[i]] = current;
+				cost_so_far[next] = new_cost;
+				frontier.push(*new NodeAndPriority(next, new_cost + Heurisitic(goalNode, next)));
+				came_from[next] = current;
 			}
 		}
 

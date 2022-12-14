@@ -33,9 +33,6 @@ void Character::steerToSeekTarget(KinematicSteeringOutput* steering) {
 	if(this->GetComponent<FollowAPath>()) { 
 		steering_outputs.push_back(this->GetComponent<FollowAPath>()->getKinematicSteering()); 
 	}
-	if (this->GetComponent<FollowAPath>()) {
-		steering_outputs.push_back(this->GetComponent<FollowAPath>()->getKinematicSteering());
-	}
 
 	for (unsigned i = 0; i < steering_outputs.size(); i++) {
 		if (steering_outputs[i]) {

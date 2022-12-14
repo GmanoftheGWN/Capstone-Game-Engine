@@ -28,6 +28,7 @@ public:
 	void createTiles(int rows, int cols);
 	void calculateConnectionWeights();
 
+	std::shared_ptr<Actor> target;
 	Path* path;
 
 public:
