@@ -1,8 +1,8 @@
 #ifndef EVADE_H
 #define EVADE_H
 
-#include "Flee.h"
-class Evade : public Flee
+#include "KinematicFlee.h"
+class Evade : public KinematicFlee
 {
 protected:
 	float prediction;

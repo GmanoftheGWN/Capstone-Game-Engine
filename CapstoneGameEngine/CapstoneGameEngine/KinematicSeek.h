@@ -17,6 +17,7 @@ private:
 public:
 	KinematicSeek(Ref<Actor> character_, Ref<Actor> target_);
 	virtual ~KinematicSeek();
+	virtual SteeringOutput* getSteering();
 	KinematicSteeringOutput* getKinematicSteering();
 
 };

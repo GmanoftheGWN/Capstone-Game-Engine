@@ -1,35 +1,27 @@
 #include "Tile.h"
 
+Tile::Tile(Node* node_, float width_, float height_, Scene* scene_) : Actor(nullptr)
+{
+	node = node_;
+	width = width_;
+	height = height_;
+	r = 0;
+	g = 255;
+	b = 255;
+	a = 255;
+	scene = scene_;
+
+	this->AddComponent<MeshComponent>(nullptr, "meshes/Plane.obj");
+	this->AddComponent<MaterialComponent>(nullptr, "textures/redCheckerPiece.png");
+	this->AddComponent<ShaderComponent>(nullptr, "shaders/textureVert.glsl", "shaders/textureFrag.glsl");
+
+	GEOMETRY::Box box;
+	box.set(Vec3(0.0f, 0.0f, -4.0f), Vec3(1.0f, 1.0f, 1.0f), Quaternion());
+	this->AddComponent<ShapeComponent>(nullptr, box);
+}
+
 void Tile::Render()
 {
-	//SDL_Renderer* renderer = scene->game->getRenderer();
-	//SDL_Rect rect;
-	//Vec3 topLeftScreenCoords;
-	//Vec3 bottomRightScreenCoords;
-	//Vec3 topLeftWorld;
-	//Vec3 bottomRightWorld;
-
-	//// node position is at center of tile
-	//Vec3 pos = node->getPos();
-	//topLeftWorld = Vec3(pos.x - 0.5f * width, pos.y + 0.5f * height, 0.0f);
-	//bottomRightWorld = Vec3(pos.x + 0.5f * width, pos.y - 0.5f * height, 0.0f);
-
-	//topLeftScreenCoords = scene->getProjectionMatrix() * topLeftWorld;
-	//bottomRightScreenCoords = scene->getProjectionMatrix() * bottomRightWorld;
-
-	//rect.x = static_cast<int>(topLeftScreenCoords.x);
-	//rect.y = static_cast<int>(topLeftScreenCoords.y);
-	//rect.w = static_cast<int>(bottomRightScreenCoords.x - topLeftScreenCoords.x);
-	//rect.h = static_cast<int>(bottomRightScreenCoords.y - topLeftScreenCoords.y);
-
-	//// draw the tile (you could use images and textures here if you want)
-	//setRGBA(17, 138, 178, 255);		// blue-green colour
-	//SDL_SetRenderDrawColor(renderer, r, g, b, a);
-	//SDL_RenderFillRect(renderer, &rect);
-
-	//// draw the border around the tile
-	//setRGBA(255, 255, 255, 255);	// white
-	//SDL_SetRenderDrawColor(renderer, r, g, b, a);
-	//SDL_RenderDrawRect(renderer, &rect);
+	
 
 }

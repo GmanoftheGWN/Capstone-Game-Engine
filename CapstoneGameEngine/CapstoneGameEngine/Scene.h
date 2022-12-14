@@ -22,6 +22,8 @@ public:
 	virtual void Render() const = 0;
 	virtual void HandleEvents(const SDL_Event &sdlEvent) = 0;
 
+	std::unordered_map<std::string, Ref<Actor >> getAllActors() { return actorContainer; }
+
 	template<typename ActorTemplate>
 	void AddActor(std::string name, Ref<Actor> parent_, Ref<ActorTemplate> actor_) {
 		if (dynamic_cast<Actor*>(actor_.get())) {

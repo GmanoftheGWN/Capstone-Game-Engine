@@ -4,6 +4,8 @@
 #include "MeshComponent.h"
 #include "MaterialComponent.h"
 #include "ShaderComponent.h"
+#include "ShapeComponent.h"
+#include "Box.h"
 
 #include "Node.h"
 
@@ -29,21 +31,7 @@ private:
 	}
 
 public:
-	Tile(Node* node_, float width_, float height_, Scene* scene_) : Actor(nullptr)
-	{
-		node = node_;
-		width = width_;
-		height = height_;
-		r = 0;
-		g = 255;
-		b = 255;
-		a = 255;
-		scene = scene_;
-
-		this->AddComponent<MeshComponent>(nullptr, "meshes/Plane.obj");
-		this->AddComponent<MaterialComponent>(nullptr, "textures/redCheckerPiece.png");
-		this->AddComponent<ShaderComponent>(nullptr, "shaders/textureVert.glsl", "shaders/textureFrag.glsl");
-	}
+	Tile(Node* node_, float width_, float height_, Scene* scene_);
 	~Tile() {}
 	void Render();
 	Node* getNode() { return node; }

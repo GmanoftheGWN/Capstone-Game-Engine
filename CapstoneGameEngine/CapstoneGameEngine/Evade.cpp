@@ -1,6 +1,6 @@
 #include "Evade.h"
 
-Evade::Evade(Ref<Actor> character_, Ref<Actor> target_) : Flee{ character_, target_ } {
+Evade::Evade(Ref<Actor> character_, Ref<Actor> target_) : KinematicFlee{ character_, target_ } {
 	character = character_;
 	target = target_;
 	prediction = maxPrediction = 10.0f;
@@ -24,12 +24,12 @@ SteeringOutput* Evade::getSteering()
 		prediction = distance / speed;
 	}
 
-	Flee::target = target;
-	Flee::target->GetComponent<TransformComponent>()->SetPosition(target->GetComponent<TransformComponent>()->GetPosition() + target->GetComponent<TransformComponent>()->getVel() * prediction);
+	KinematicFlee::target = target;
+	KinematicFlee::target->GetComponent<TransformComponent>()->SetPosition(target->GetComponent<TransformComponent>()->GetPosition() + target->GetComponent<TransformComponent>()->getVel() * prediction);
 
-	SteeringOutput* steering = Flee::getSteering();
+	SteeringOutput* steering = KinematicFlee::getSteering();
 
-	Flee::target->GetComponent<TransformComponent>()->SetPosition(target->GetComponent<TransformComponent>()->GetPosition() - target->GetComponent<TransformComponent>()->getVel() * prediction);
+	KinematicFlee::target->GetComponent<TransformComponent>()->SetPosition(target->GetComponent<TransformComponent>()->GetPosition() - target->GetComponent<TransformComponent>()->getVel() * prediction);
 
 	return steering;
 }

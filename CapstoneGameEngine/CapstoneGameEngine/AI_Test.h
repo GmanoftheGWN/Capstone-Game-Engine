@@ -20,6 +20,9 @@ public:
 
 	Graph* graph;
 	vector<Node*> nodes;
+	int safeNode;
+	int playerLocationNode;
+	int characterLocationNode;
 
 	vector<vector <Tile* >> tiles;
 	float tileWidth = 2.0;
@@ -41,6 +44,9 @@ public:
 	virtual void Update(const float deltaTime);
 	virtual void Render() const;
 	virtual void HandleEvents(const SDL_Event& sdlEvent);
+
+	int getNodeAtLocation(Ref<Actor> actor);
+
 };
 
 

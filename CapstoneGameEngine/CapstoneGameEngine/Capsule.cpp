@@ -142,8 +142,8 @@ RayIntersectionInfo GEOMETRY::Capsule::checkEndSphere(MATH::Ray& ray, float t)
 {
 	RayIntersectionInfo rayInfo;
 
-	if (VMath::dot(ray.currentPos(t) - sphereCentrePosA, sphereCentrePosB - sphereCentrePosA) >= 0
-		&& VMath::dot(ray.currentPos(t) - sphereCentrePosB, sphereCentrePosA - sphereCentrePosB) >= 0) {
+	if (VMath::dot(ray.currentPos(t) - sphereCentrePosA, sphereCentrePosB - sphereCentrePosA) <= 0
+		&& VMath::dot(ray.currentPos(t) - sphereCentrePosB, sphereCentrePosA - sphereCentrePosB) <= 0) {
 		return rayInfo;
 	}
 	else if (VMath::dot(ray.currentPos(t) - sphereCentrePosA, sphereCentrePosB - sphereCentrePosA) < 0) {

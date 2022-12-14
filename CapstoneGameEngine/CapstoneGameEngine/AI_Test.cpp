@@ -18,6 +18,7 @@
 #include "StaticBody.h"
 #include "KinematicArrive.h"
 #include "FollowAPath.h"
+#include "Action.h"
 #include "Debug.h"
 
 AI_Test::AI_Test(SceneManager* game_) {
@@ -48,6 +49,9 @@ bool AI_Test::OnCreate() {
 	GetActor<Player>("Player")->AddComponent<MeshComponent>(assetManager->GetAsset<MeshComponent>("MarioMesh"));
 	GetActor<Player>("Player")->AddComponent<MaterialComponent>(assetManager->GetAsset<MaterialComponent>("MarioTexture"));
 	GetActor<Player>("Player")->AddComponent<ShaderComponent>(assetManager->GetAsset<ShaderComponent>("TextureShader"));
+	GEOMETRY::Capsule capsule;
+	capsule.set(0.5f, Vec3(0.0f, 0.0f, 1.0f), Vec3(0.0f, 0.0f, -1.0f));
+	GetActor<Actor>("Player")->AddComponent<ShapeComponent>(nullptr, capsule);
 	GetActor<Player>("Player")->OnCreate(); 
 	GetActor<Player>("Player")->GetComponent<TransformComponent>()->setMaxAcceleration(12.0f);
 
@@ -56,6 +60,8 @@ bool AI_Test::OnCreate() {
 	GetActor<Character>("NPC")->AddComponent<MeshComponent>(assetManager->GetAsset<MeshComponent>("MarioMesh"));
 	GetActor<Character>("NPC")->AddComponent<MaterialComponent>(assetManager->GetAsset<MaterialComponent>("MarioTexture"));
 	GetActor<Character>("NPC")->AddComponent<ShaderComponent>(assetManager->GetAsset<ShaderComponent>("TextureShader"));
+	GetActor<Character>("NPC")->addStateMachine();
+	GetActor<Character>("NPC")->addDecisionTree(DECISION_TREE::SEEKER);
 	GetActor<Character>("NPC")->OnCreate(this);
 
 	// create a tile with a node
@@ -74,24 +80,11 @@ bool AI_Test::OnCreate() {
 
 	calculateConnectionWeights();
 	
-	int startNode = 370;
-	int goalNode = 82;
+	int startNode = 400;
+	int safeNode = 490;
 
 	GetActor<Character>("NPC")->GetComponent<KinematicBody>()->SetTransform(Vec3(nodes[startNode]->getPos().x, nodes[startNode]->getPos().y, 1.25f), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
-	GetActor<Player>("Player")->GetComponent<TransformComponent>()->SetTransform(Vec3(tiles[rows-1][cols-1]->getNode()->getPos().x, tiles[rows-1][cols-1]->getNode()->getPos().y, 1.25f), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
-
-	vector<Node*> pathNodes;
-	map<int, int> nodeNumbers = graph->AStar(startNode, goalNode);
-	for (int i = goalNode; i != startNode; i = nodeNumbers[i]) {
-		pathNodes.push_back(nodes[i]);
-	}
-	std::reverse(pathNodes.begin(), pathNodes.end());
-	path = new Path(pathNodes);
-
-	FollowAPath* steering_algorithm;
-	std::shared_ptr target = std::make_shared<Actor>(nullptr);
-	target->AddComponent<TransformComponent>(nullptr, Vec3(), Quaternion());
-	GetActor<Character>("NPC")->AddComponent<FollowAPath>(GetActor<Actor>("NPC"), target, 1.0f, path);
+	GetActor<Player>("Player")->GetComponent<TransformComponent>()->SetTransform(Vec3(tiles[1][5]->getNode()->getPos().x, tiles[1][5]->getNode()->getPos().y, 1.25f), QMath::angleAxisRotation(90.0f, Vec3(1.0f, 0.0f, 0.0f)));
 
 	AddActor<Actor>("Box1", nullptr, std::make_shared<Actor>(nullptr));
 	GEOMETRY::Box box;
@@ -200,6 +193,47 @@ void AI_Test::calculateConnectionWeights()
 	}
 }
 
+int AI_Test::getNodeAtLocation(Ref<Actor> actor) {
+
+	Tile* pickedActor = nullptr;
+
+	Vec3 ray_worldStart = actor->GetComponent<TransformComponent>()->GetPosition();
+	Vec3 ray_worldDirection = Vec3(0.0f,0.0f,-1.0f);
+
+	MATH::Ray ray{ ray_worldStart, ray_worldDirection };
+
+	// Loop through all the actors and check if the ray has collided with them
+	// Pick the one with the smallest positive t value
+	bool haveClickedOnSomething = false;
+	GEOMETRY::RayIntersectionInfo rayInfo;
+	for (auto it : nodes) {
+		GEOMETRY::RayIntersectionInfo tempRayInfo;
+		Tile* tile = it->getTile();
+		Ref<TransformComponent> transformComponent = tile->GetComponent <TransformComponent>();
+		Ref<ShapeComponent> shapeComponent = tile->GetComponent <ShapeComponent>();
+		if (shapeComponent.get() == nullptr) { continue; }
+		Vec3 position = Vec3(transformComponent->GetPosition().x, transformComponent->GetPosition().y, 0.0f);
+		Matrix4 worldToObjectTransform = MMath::inverse(MMath::translate(position));
+		Vec3 rayStartInObjectSpace = worldToObjectTransform * ray.start;
+		Vec3 rayDirInObjectSpace = worldToObjectTransform.multiplyWithoutDividingOutW(Vec4(ray.dir, 0.0f));
+		MATH::Ray rayInObjectSpace{ rayStartInObjectSpace, rayDirInObjectSpace };
+
+		tempRayInfo = shapeComponent->shape->rayIntersectionInfo(rayInObjectSpace);
+		if (tempRayInfo.isIntersected) {
+			if (rayInfo.isIntersected == true && tempRayInfo.t > rayInfo.t) {
+				continue;
+			}
+			rayInfo.isIntersected = true;
+			rayInfo.t = tempRayInfo.t;
+			rayInfo.intersectionPoint = tempRayInfo.intersectionPoint;
+			Vec3 intersectionPoint = tile->GetComponent<TransformComponent>()->GetTransformMatrix() * rayInfo.intersectionPoint;
+			pickedActor = tile;
+		}
+	}
+
+	return pickedActor->getNode()->getLabel();
+}
+
 void AI_Test::OnDestroy() {
 	Debug::Info("Deleting assets AI_Test: ", __FILE__, __LINE__);
 	actorContainer.clear();
@@ -231,7 +265,7 @@ void AI_Test::HandleEvents(const SDL_Event& sdlEvent) {
 		break;
 
 	case SDL_MOUSEBUTTONDOWN:
-		if (sdlEvent.button.button == SDL_BUTTON_LEFT) {
+		if (sdlEvent.button.button == SDL_BUTTON_RIGHT) {
 			Vec3 mouseCoords(static_cast<float>(sdlEvent.button.x), static_cast<float>(sdlEvent.button.y), 1.0f);
 			int viewport[4];
 			glGetIntegerv(GL_VIEWPORT, viewport);
@@ -294,34 +328,6 @@ void AI_Test::Update(const float deltaTime) {
 
 	// Update player
 	game->getPlayer()->Update(deltaTime);
-
-	//Example AI wandering
-	if (GetActor<Character>("NPC")->GetComponent<FollowAPath>()) {
-		int currentNode = GetActor<Character>("NPC")->GetComponent<FollowAPath>()->getPath()->CurrentNode;
-		if (currentNode == GetActor<Character>("NPC")->GetComponent<FollowAPath>()->getPath()->nodes.size() - 1)
-		{
-			int startNode = GetActor<Character>("NPC")->GetComponent<FollowAPath>()->getPath()->nodes[currentNode]->getLabel();
-			int goalNode = std::rand() % 499;
-			while (nodes[goalNode]->getObstructed()) {
-				goalNode = std::rand() % 499;
-			}
-
-			vector<Node*> pathNodes;
-			map<int, int> nodeNumbers = graph->AStar(startNode, goalNode);
-			for (int i = goalNode; i != startNode; i = nodeNumbers[i]) {
-				pathNodes.push_back(nodes[i]);
-			}
-			std::reverse(pathNodes.begin(), pathNodes.end());
-			path = new Path(pathNodes);
-
-			FollowAPath* steering_algorithm;
-			std::shared_ptr target = std::make_shared<Actor>(nullptr);
-			target->AddComponent<TransformComponent>(nullptr, Vec3(), Quaternion());
-			GetActor<Character>("NPC")->RemoveComponent<FollowAPath>();
-			GetActor<Character>("NPC")->AddComponent<FollowAPath>(GetActor<Actor>("NPC"), target, 1.0f, path);
-		}
-	}
-
 }
 
 void AI_Test::Render() const {
@@ -338,6 +344,9 @@ void AI_Test::Render() const {
 			if (actor.second->GetComponent<ShapeComponent>()) {
 				if (actor.second->GetComponent<ShapeComponent>()->shapeType == ShapeType::box) {
 					actor.second->GetComponent<ShapeComponent>()->Render(GL_TRIANGLES);
+				}
+				else {
+					actor.second->GetComponent<MeshComponent>()->Render(GL_TRIANGLES);
 				}
 			}
 			else {

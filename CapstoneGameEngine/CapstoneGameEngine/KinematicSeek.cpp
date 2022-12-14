@@ -22,3 +22,7 @@ KinematicSteeringOutput* KinematicSeek::getKinematicSteering() {
 	return kinematicResult;
 
 }
+
+SteeringOutput* KinematicSeek::getSteering() {
+	return nullptr;
+}
