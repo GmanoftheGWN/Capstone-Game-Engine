@@ -14,6 +14,7 @@
 #include "MeshComponent.h"
 #include "ShaderComponent.h"
 #include "MaterialComponent.h"
+#include "ShapeComponent.h"
 #include "StaticBody.h"
 #include "KinematicArrive.h"
 #include "FollowAPath.h"
@@ -47,7 +48,8 @@ bool AI_Test::OnCreate() {
 	GetActor<Player>("Player")->AddComponent<MeshComponent>(assetManager->GetAsset<MeshComponent>("MarioMesh"));
 	GetActor<Player>("Player")->AddComponent<MaterialComponent>(assetManager->GetAsset<MaterialComponent>("MarioTexture"));
 	GetActor<Player>("Player")->AddComponent<ShaderComponent>(assetManager->GetAsset<ShaderComponent>("TextureShader"));
-	GetActor<Player>("Player")->OnCreate(); GetActor<Player>("Player")->GetComponent<TransformComponent>()->setMaxAcceleration(12.0f);
+	GetActor<Player>("Player")->OnCreate(); 
+	GetActor<Player>("Player")->GetComponent<TransformComponent>()->setMaxAcceleration(12.0f);
 
 	AddActor<Character>("NPC", nullptr, std::make_shared<Character>());
 	GetActor<Character>("NPC")->AddComponent<KinematicBody>(std::make_shared<KinematicBody>(nullptr, Vec3(0.0f, 0.0f, 0.0f), Quaternion(), 6.0f, 10.0f));
@@ -91,6 +93,21 @@ bool AI_Test::OnCreate() {
 	target->AddComponent<TransformComponent>(nullptr, Vec3(), Quaternion());
 	GetActor<Character>("NPC")->AddComponent<FollowAPath>(GetActor<Actor>("NPC"), target, 1.0f, path);
 
+	AddActor<Actor>("Box1", nullptr, std::make_shared<Actor>(nullptr));
+	GEOMETRY::Box box;
+	box.set(Vec3(0.0f,0.0f,0.0f), Vec3(3.5f,3.5f,3.5f), Quaternion());
+	GetActor<Actor>("Box1")->AddComponent<TransformComponent>(nullptr, Vec3(-14.75f, -15.75f, 0.0f), Quaternion());
+	GetActor<Actor>("Box1")->AddComponent<ShapeComponent>(nullptr, box);
+	GetActor<Actor>("Box1")->AddComponent<MeshComponent>(nullptr, "meshes/Cube.obj");
+	GetActor<Actor>("Box1")->AddComponent<MaterialComponent>(nullptr, "textures/redCheckerPiece.png");
+	GetActor<Actor>("Box1")->AddComponent<ShaderComponent>(nullptr, "shaders/textureVert.glsl", "shaders/textureFrag.glsl");
+	GetActor<Actor>("Box1")->OnCreate();
+
+	tiles[2][5]->getNode()->setObstructed(true);
+	tiles[3][5]->getNode()->setObstructed(true);
+	tiles[2][6]->getNode()->setObstructed(true);
+	tiles[3][6]->getNode()->setObstructed(true);
+
 	return true;
 }
 
@@ -118,7 +135,7 @@ void AI_Test::createTiles(int rows, int cols)
 			t = new Tile(n, tileWidth, tileHeight, this);
 			t->AddComponent<TransformComponent>(nullptr, Vec3(x, y, 0.0f), Quaternion(), Vec3(0.15f,0.15f,0.15f));
 			n->setTile(t);
-			if (i % 2 == 1) {
+			if (i % 2 == 0) {
 				if (j % 2 == 0) {
 					if (i != 0) {
 						if (j != 0) {
@@ -191,7 +208,7 @@ void AI_Test::OnDestroy() {
 void AI_Test::HandleEvents(const SDL_Event& sdlEvent) {
 	game->getPlayer()->HandleEvents(sdlEvent);
 
-	/*Ref<CameraActor> camera = GetActor<CameraActor>("Camera");
+	Ref<CameraActor> camera = GetActor<CameraActor>("Camera");
 	Ref<TransformComponent> cameraTransform = camera->GetComponent<TransformComponent>();
 	
 	switch (sdlEvent.type) {
@@ -214,6 +231,52 @@ void AI_Test::HandleEvents(const SDL_Event& sdlEvent) {
 		break;
 
 	case SDL_MOUSEBUTTONDOWN:
+		if (sdlEvent.button.button == SDL_BUTTON_LEFT) {
+			Vec3 mouseCoords(static_cast<float>(sdlEvent.button.x), static_cast<float>(sdlEvent.button.y), 1.0f);
+			int viewport[4];
+			glGetIntegerv(GL_VIEWPORT, viewport);
+			Matrix4 ndc = MMath::viewportNDC(viewport[2], viewport[3]);
+			Matrix4 projection = camera->GetProjectionMatrix();
+			Matrix4 view = camera->GetViewMatrix();
+			Matrix4 rayTransform = MMath::inverse(ndc * projection);
+
+			Vec3 ray_worldStart = { 0.0f,0.0f,0.0f };
+			Vec3 ray_worldDirection = VMath::normalize(rayTransform * mouseCoords);
+
+			MATH::Ray ray{ ray_worldStart, ray_worldDirection };
+
+			// Loop through all the actors and check if the ray has collided with them
+			// Pick the one with the smallest positive t value
+			bool haveClickedOnSomething = false;
+			GEOMETRY::RayIntersectionInfo rayInfo;
+			std::string pickedActorName = "ThE VoId...";
+			for (auto it : actorContainer) {
+				GEOMETRY::RayIntersectionInfo tempRayInfo;
+				Ref<Actor> actor = std::dynamic_pointer_cast<Actor>(it.second);
+				Ref<TransformComponent> transformComponent = actor->GetComponent <TransformComponent>();
+				Ref<ShapeComponent> shapeComponent = actor->GetComponent <ShapeComponent>();
+				if (shapeComponent.get() == nullptr) { continue; }
+				Matrix4 worldToObjectTransform = MMath::inverse(view * actor->GetComponent<TransformComponent>()->GetTransformMatrix());
+				Vec3 rayStartInObjectSpace = worldToObjectTransform * ray.start;
+				Vec3 rayDirInObjectSpace = worldToObjectTransform.multiplyWithoutDividingOutW(Vec4(ray.dir, 0.0f));
+				MATH::Ray rayInObjectSpace{ rayStartInObjectSpace, rayDirInObjectSpace };
+
+				tempRayInfo = shapeComponent->shape->rayIntersectionInfo(rayInObjectSpace);
+				if (tempRayInfo.isIntersected) {
+					if (rayInfo.isIntersected == true && tempRayInfo.t > rayInfo.t) {
+						continue;
+					}
+					rayInfo.isIntersected = true;
+					rayInfo.t = tempRayInfo.t;
+					rayInfo.intersectionPoint = tempRayInfo.intersectionPoint;
+					Vec3 intersectionPoint = actor->GetComponent<TransformComponent>()->GetTransformMatrix() * rayInfo.intersectionPoint;
+					Ref<Actor> pickedActor = actor;
+					pickedActorName = it.first;
+					haveClickedOnSomething = true;
+				}
+			}
+			std::cout << "You picked: " << pickedActorName << '\n';
+		}
 		break;
 
 	case SDL_MOUSEBUTTONUP:
@@ -221,7 +284,7 @@ void AI_Test::HandleEvents(const SDL_Event& sdlEvent) {
 
 	default:
 		break;
-	}*/
+	}
 }
 
 void AI_Test::Update(const float deltaTime) {
@@ -272,7 +335,14 @@ void AI_Test::Render() const {
 			glUseProgram(actor.second->GetComponent<ShaderComponent>()->GetProgram());
 			glUniformMatrix4fv(actor.second->GetComponent<ShaderComponent>()->GetUniformID("modelMatrix"), 1, GL_FALSE, actor.second->GetComponent<TransformComponent>()->GetTransformMatrix());
 			glBindTexture(GL_TEXTURE_2D, actor.second->GetComponent<MaterialComponent>()->getTextureID());
-			actor.second->GetComponent<MeshComponent>()->Render(GL_TRIANGLES);
+			if (actor.second->GetComponent<ShapeComponent>()) {
+				if (actor.second->GetComponent<ShapeComponent>()->shapeType == ShapeType::box) {
+					actor.second->GetComponent<ShapeComponent>()->Render(GL_TRIANGLES);
+				}
+			}
+			else {
+				actor.second->GetComponent<MeshComponent>()->Render(GL_TRIANGLES);
+			}
 		}
 	}
 

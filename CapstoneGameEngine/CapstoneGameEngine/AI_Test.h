@@ -31,6 +31,7 @@ public:
 	std::shared_ptr<Actor> target;
 	Path* path;
 
+
 public:
 	explicit AI_Test(SceneManager* game_);
 	virtual ~AI_Test();
