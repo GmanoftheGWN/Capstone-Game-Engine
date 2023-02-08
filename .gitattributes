@@ -1,1 +1,4 @@
-
+CapstoneGameEngine/x64/Debug/PhysXGpu_64.dll filter=lfs diff=lfs merge=lfs -text
+CapstoneGameEngine/x64/Release/PhysXGpu_64.dll filter=lfs diff=lfs merge=lfs -text
+CapstoneGameEngine\CapstoneGameEngine\External\Vulkan\lib\shaderc_combined.lib" filter=lfs diff=lfs merge=lfs -text
+CapstoneGameEngine\CapstoneGameEngine\External\Vulkan\lib\SPIRV-Tools-opt.lib" filter=lfs diff=lfs merge=lfs -text
