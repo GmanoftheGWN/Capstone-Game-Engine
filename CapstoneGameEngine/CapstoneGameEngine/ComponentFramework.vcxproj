@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{614C2865-E38B-423B-8A72-E9D57BC43A73}</ProjectGuid>
+    <RootNamespace>ComponentFramework</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>CapstoneGameEngine</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\GameDev\OpenGL\include;C:\GameDev\SDL\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>C:\GameDev\OpenGL\include;C:\GameDev\SDL\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(ProjectDir)\External\SDL\include;$(ProjectDir)\External\OpenGl\include;$(ProjectDir)\External\Vulkan\include;$(ProjectDir)\External\EnTT;$(ProjectDir)\External\PhysX\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>$(ProjectDir)\External\SDL\include;$(ProjectDir)\External\OpenGl\include;$(ProjectDir)\External\Vulkan\include;$(ProjectDir)\External\EnTT;$(ProjectDir)\External\PhysX\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\GameDev\OpenGL\lib;C:\GameDev\SDL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;glew32.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(ProjectDir)\External\OpenGL\lib\x64;$(ProjectDir)\External\SDL\lib\x64;$(ProjectDir)\External\Vulkan\lib;$(ProjectDir)\External\Physx\checked;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);SDL2.lib;SDL2_image.lib;SDL2main.lib;SDL2test.lib;glew32.lib;glew32s.lib;opengl32.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;glew32.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>C:\GameDev\OpenGL\lib;C:\GameDev\SDL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(ProjectDir)\External\OpenGl\lib\x64;$(ProjectDir)\External\SDL\lib\x64;$(ProjectDir)\External\Vulkan\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2_image.lib;SDL2main.lib;glew32.lib;glew32s.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Action.cpp" />
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="AI_Test.cpp" />
+    <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="Box.cpp" />
+    <ClCompile Include="CameraActor.cpp" />
+    <ClCompile Include="Capsule.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="CollisionAvoidance.cpp" />
+    <ClCompile Include="Condition.cpp" />
+    <ClCompile Include="ConditionInRange.cpp" />
+    <ClCompile Include="ConditionInView.cpp" />
+    <ClCompile Include="ConditionOutOfRange.cpp" />
+    <ClCompile Include="Debug.cpp" />
+    <ClCompile Include="Decision.cpp" />
+    <ClCompile Include="DecisionTreeNode.cpp" />
+    <ClCompile Include="EMath.cpp" />
+    <ClCompile Include="Evade.cpp" />
+    <ClCompile Include="Hash.cpp" />
+    <ClCompile Include="KinematicFlee.cpp" />
+    <ClCompile Include="FollowAPath.cpp" />
+    <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="CloserToPlayerThanTargetDecision.cpp" />
+    <ClCompile Include="KinematicArrive.cpp" />
+    <ClCompile Include="KinematicBody.cpp" />
+    <ClCompile Include="KinematicSeek.cpp" />
+    <ClCompile Include="KinematicSteeringOutput.cpp" />
+    <ClCompile Include="LightActor.cpp" />
+    <ClCompile Include="MaterialComponent.cpp" />
+    <ClCompile Include="MeshComponent.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="OpenGLRenderer.cpp" />
+    <ClCompile Include="Path.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerInRangeDecision.cpp" />
+    <ClCompile Include="PlayerInViewDecision.cpp" />
+    <ClCompile Include="Pursue.cpp" />
+    <ClCompile Include="QMath.cpp" />
+    <ClCompile Include="QuadraticSolver.cpp" />
+    <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="Scene1.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MMath.cpp" />
+    <ClCompile Include="Scene0.cpp" />
+    <ClCompile Include="Seek.cpp" />
+    <ClCompile Include="ShaderComponent.cpp" />
+    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="ShapeComponent.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
+    <ClCompile Include="StaticBody.cpp" />
+    <ClCompile Include="SteeringBehaviour.cpp" />
+    <ClCompile Include="SteeringOutput.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
+    <ClCompile Include="TransformComponent.cpp" />
+    <ClCompile Include="Transition.cpp" />
+    <ClCompile Include="VMath.cpp" />
+    <ClCompile Include="VulkanRenderer.cpp" />
+    <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="AI_Test.h" />
+    <ClInclude Include="AssetManager.h" />
+    <ClInclude Include="AxisAngle.h" />
+    <ClInclude Include="Box.h" />
+    <ClInclude Include="CameraActor.h" />
+    <ClInclude Include="Capsule.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="CollisionAvoidance.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="Condition.h" />
+    <ClInclude Include="ConditionInRange.h" />
+    <ClInclude Include="ConditionInView.h" />
+    <ClInclude Include="ConditionOutOfRange.h" />
+    <ClInclude Include="Debug.h" />
+    <ClInclude Include="Decision.h" />
+    <ClInclude Include="DecisionTreeNode.h" />
+    <ClInclude Include="EMath.h" />
+    <ClInclude Include="Euler.h" />
+    <ClInclude Include="Evade.h" />
+    <ClInclude Include="Hash.h" />
+    <ClInclude Include="KinematicFlee.h" />
+    <ClInclude Include="FollowAPath.h" />
+    <ClInclude Include="Graph.h" />
+    <ClInclude Include="CloserToPlayerThanTargetDecision.h" />
+    <ClInclude Include="KinematicArrive.h" />
+    <ClInclude Include="KinematicBody.h" />
+    <ClInclude Include="KinematicSeek.h" />
+    <ClInclude Include="KinematicSteeringOutput.h" />
+    <ClInclude Include="LightActor.h" />
+    <ClInclude Include="MaterialComponent.h" />
+    <ClInclude Include="MeshComponent.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="OpenGLRenderer.h" />
+    <ClInclude Include="Path.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerInRangeDecision.h" />
+    <ClInclude Include="PlayerInViewDecision.h" />
+    <ClInclude Include="Pursue.h" />
+    <ClInclude Include="QMath.h" />
+    <ClInclude Include="QuadraticSolver.h" />
+    <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="Ray.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Scene1.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="MMath.h" />
+    <ClInclude Include="Plane.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Scene0.h" />
+    <ClInclude Include="Seek.h" />
+    <ClInclude Include="ShaderComponent.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="ShapeComponent.h" />
+    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateMachine.h" />
+    <ClInclude Include="StaticBody.h" />
+    <ClInclude Include="SteeringBehaviour.h" />
+    <ClInclude Include="SteeringOutput.h" />
+    <ClInclude Include="Tile.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="TinyObjInclude.h" />
+    <ClInclude Include="tinyxml2.h" />
+    <ClInclude Include="tiny_obj_loader.h" />
+    <ClInclude Include="TransformComponent.h" />
+    <ClInclude Include="Transition.h" />
+    <ClInclude Include="UBO_Padding.h" />
+    <ClInclude Include="Vector.h" />
+    <ClInclude Include="VMath.h" />
+    <ClInclude Include="VulkanRenderer.h" />
+    <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="GameEngineLog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\defaultFrag.glsl" />
+    <None Include="shaders\defaultVert.glsl" />
+    <None Include="shaders\textureFrag.glsl" />
+    <None Include="shaders\textureVert.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Manifest.xml" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

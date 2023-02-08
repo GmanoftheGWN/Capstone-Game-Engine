@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <Scene0>
+    <Camera>
+      <Component name ="Transform">
+        <Location x="0.0" y="0.0" z="-60.0"/>
+		  <Orientation type="AngleAxis" angle="-60.0" axisX="1.0" axisY="0.0" axisZ="0.0"/>
+      </Component>
+      <Projection fovy="0.0" near="0.0" far="0.0"/>
+      <Skybox></Skybox>
+    </Camera>
+
+    <Light>
+      <Location x="5.0" y="0.0" z="22.0"/>
+      <Diffuse red="1.0" green="1.0" blue="1.0" alpha="1.0"/>
+      <Ambient red="0.5" green="0.4" blue="0.3" alpha="0.2"/>
+      <Specular red="0.5" green="0.4" blue="0.3" alpha="0.2"/>
+    </Light>
+    
+    <Actor name = "Mario" type ="Default">
+      <Component name ="Transform">
+        <Location x="0.0" y="0.0" z="10.0"/>
+        <Orientation type="AngleAxis" angle="180.0" axisX="0.0" axisY="1.0" axisZ="0.0"/>
+      </Component>
+      <Component name ="Mesh" filename="meshes/Mario.obj"/>
+      <Component name ="Material" filename="textures/mario_fire.png"/>
+      <Component name ="Shader" vertFilename="shaders/textureVert.glsl" fragFilename="shaders/textureFrag.glsl"/>
+    </Actor>
+    
+    <Actor name = "Hammer" type ="Default">
+      <Component name ="Transform">
+        <Location x="1.1" y="0.1" z="0.25"/>
+        <Orientation type="AngleAxis" angle="-90.0" axisX="1.0" axisY="0.0" axisZ="0.0"/>
+      </Component>
+      <Component name ="Mesh" filename="meshes/Hammer.obj"/>
+      <Component name ="Material" filename="textures/hammer_BaseColor.png"/>
+      <Component name ="Shader" vertFilename="shaders/textureVert.glsl" fragFilename="shaders/textureFrag.glsl"/>
+    </Actor>
+
+    <Component name ="Mesh" type ="MarioMesh" filename="meshes/Mario.obj"/>
+    <Component name ="Mesh" type ="HammerMesh" filename="meshes/Hammer.obj"/>
+    <Component name ="Material" type ="MarioTexture" filename="textures/mario_fire.png"/>
+    <Component name ="Material" type ="HammerTexture" filename="textures/hammer_BaseColor.png"/>
+    <Component name ="Shader" type ="TextureShader" vertFilename="shaders/textureVert.glsl" fragFilename="shaders/textureFrag.glsl"/>
+
+  </Scene0>
+
+
+  <Scene1>
+    <Camera>
+      <Component name ="Transform">
+        <Location x="0.0" y="0.0" z="-15.0"/>
+        <Orientation type="AngleAxis" angle="0.0" axis="x"/>
+      </Component>
+      <Projection fovy="0.0" near="0.0" far="0.0"/>
+      <Skybox></Skybox>
+    </Camera>
+
+    <Light>
+      <Location x="10.0" y="10.0" z="0.0"/>
+      <Diffuse red="1.0" green="1.0" blue="1.0" alpha="1.0"/>
+      <Ambient red="0.5" green="0.4" blue="0.3" alpha="0.2"/>
+      <Specular red="0.5" green="0.4" blue="0.3" alpha="0.2"/>
+    </Light>
+
+    <Actor name = "Checkerboard" type ="Default">
+      <Component name ="Transform">
+        <Location x="0.0" y="0.0" z="0.0"/>
+        <Orientation type="AngleAxis" angle="-60.0" axisX="1.0" axisY="0.0" axisZ="0.0"/>
+      </Component>
+      <Component name ="Mesh" filename="meshes/Plane.obj"/>
+      <Component name ="Material" filename="textures/8x8_checkered_board.png"/>
+      <Component name ="Shader" vertFilename="shaders/textureVert.glsl" fragFilename="shaders/textureFrag.glsl"/>
+    </Actor>
+
+    <Actor name = "RedChecker" type ="Red">
+      <Component name ="Transform">
+        <Location x="0.0" y="0.0" z="0.0"/>
+        <Orientation type="AngleAxis" angle="0.0" axisX="1.0" axisY="0.0" axisZ="0.0"/>
+      </Component>
+      <Component name ="Mesh" filename="meshes/CheckerPiece.obj"/>
+      <Component name ="Material" filename="textures/redCheckerPiece.png"/>
+      <Component name ="Shader" vertFilename="shaders/textureVert.glsl" fragFilename="shaders/textureFrag.glsl"/>
+    </Actor>
+
+    <Actor name = "BlackChecker" type ="Black">
+      <Component name ="Transform">
+        <Location x="0.0" y="0.0" z="0.0"/>
+        <Orientation type="AngleAxis" angle="0.0" axisX="1.0" axisY="0.0" axisZ="0.0"/>
+      </Component>
+      <Component name ="Mesh" filename="meshes/CheckerPiece.obj"/>
+      <Component name ="Material" filename="textures/blackCheckerPiece.png"/>
+      <Component name ="Shader" vertFilename="shaders/textureVert.glsl" fragFilename="shaders/textureFrag.glsl"/>
+    </Actor>
+
+    <Component name ="Mesh" type ="CheckerboardMesh" filename="meshes/Plane.obj"/>
+    <Component name ="Mesh" type ="CheckerMesh" filename="meshes/CheckerPiece.obj"/>
+    <Component name ="Material" type ="CheckerboardTexture" filename="textures/8x8_checkered_board.png"/>
+    <Component name ="Material" type ="RedCheckerTexture" filename="textures/redCheckerPiece.png"/>
+    <Component name ="Material" type ="BlackCheckerTexture" filename="textures/blackCheckerPiece.png"/>
+    <Component name ="Shader" type ="TextureShader" vertFilename="shaders/textureVert.glsl" fragFilename="shaders/textureFrag.glsl"/>
+
+  </Scene1>
+</Root>
