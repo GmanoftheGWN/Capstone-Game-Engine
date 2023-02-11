@@ -43,9 +43,6 @@
     <Filter Include="Header Files\Renderers">
       <UniqueIdentifier>{e52a10ec-8e4b-49bd-b8c7-02968ad5f842}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EntityComponentSystem">
-      <UniqueIdentifier>{2a7a634c-9461-404a-967e-03313fcdaa63}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\EntityComponentSystem">
       <UniqueIdentifier>{877ebf1d-c807-43a3-8e6c-62225a8777a8}</UniqueIdentifier>
     </Filter>
@@ -73,24 +70,6 @@
     <Filter Include="Source Files\AI\DecisionMaking">
       <UniqueIdentifier>{9c8f5606-0492-4165-94f1-89da87e6522e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="EntityComponentSystem\DataDrivenEnTT">
-      <UniqueIdentifier>{0f249981-a5f5-4d4f-954c-b85ad6d53838}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EntityComponentSystem\Composition">
-      <UniqueIdentifier>{ef40ec2a-c584-4922-a9d9-6d2a39fe1f94}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EntityComponentSystem\Composition\Actors">
-      <UniqueIdentifier>{1bca0a0d-cc10-4281-b276-1c4fc9286717}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EntityComponentSystem\Composition\Components">
-      <UniqueIdentifier>{c9ad0367-8211-4cd9-861a-d68c83f3a961}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EntityComponentSystem\DataDrivenEnTT\Components">
-      <UniqueIdentifier>{ba5214b1-b4b8-482d-abb7-c540e26ec5bb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EntityComponentSystem\DataDrivenEnTT\Systems">
-      <UniqueIdentifier>{c3232909-34c8-4c1d-904a-b4e33d8fb614}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\EntityComponentSystem\Composition">
       <UniqueIdentifier>{025706aa-7a43-4183-8cac-54bc471c7faa}</UniqueIdentifier>
     </Filter>
@@ -108,6 +87,27 @@
     </Filter>
     <Filter Include="Source Files\EntityComponentSystem\DataDrivenEnTT\Systems">
       <UniqueIdentifier>{0f8d642b-ea7e-4b8b-aa8d-22075822041e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem">
+      <UniqueIdentifier>{2a7a634c-9461-404a-967e-03313fcdaa63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem\DataDrivenEnTT">
+      <UniqueIdentifier>{0f249981-a5f5-4d4f-954c-b85ad6d53838}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem\DataDrivenEnTT\Components">
+      <UniqueIdentifier>{ba5214b1-b4b8-482d-abb7-c540e26ec5bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem\DataDrivenEnTT\Systems">
+      <UniqueIdentifier>{c3232909-34c8-4c1d-904a-b4e33d8fb614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem\Composition">
+      <UniqueIdentifier>{ef40ec2a-c584-4922-a9d9-6d2a39fe1f94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem\Composition\Actors">
+      <UniqueIdentifier>{1bca0a0d-cc10-4281-b276-1c4fc9286717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem\Composition\Components">
+      <UniqueIdentifier>{c9ad0367-8211-4cd9-861a-d68c83f3a961}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -360,28 +360,28 @@
       <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="Actor.h">
-      <Filter>EntityComponentSystem\Composition\Actors</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>EntityComponentSystem\Composition\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Components</Filter>
     </ClInclude>
     <ClInclude Include="CameraActor.h">
-      <Filter>EntityComponentSystem\Composition\Actors</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClInclude>
     <ClInclude Include="MaterialComponent.h">
-      <Filter>EntityComponentSystem\Composition\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Components</Filter>
     </ClInclude>
     <ClInclude Include="MeshComponent.h">
-      <Filter>EntityComponentSystem\Composition\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Components</Filter>
     </ClInclude>
     <ClInclude Include="TransformComponent.h">
-      <Filter>EntityComponentSystem\Composition\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Components</Filter>
     </ClInclude>
     <ClInclude Include="ShaderComponent.h">
-      <Filter>EntityComponentSystem\Composition\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Components</Filter>
     </ClInclude>
     <ClInclude Include="LightActor.h">
-      <Filter>EntityComponentSystem\Composition\Actors</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClInclude>
     <ClInclude Include="Scene1.h">
       <Filter>Header Files\Scenes</Filter>
@@ -405,10 +405,10 @@
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>EntityComponentSystem\Composition\Actors</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
-      <Filter>EntityComponentSystem\Composition\Actors</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClInclude>
     <ClInclude Include="SteeringOutput.h">
       <Filter>Header Files\AI\Steering</Filter>
@@ -462,7 +462,7 @@
       <Filter>Header Files\AI\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="ShapeComponent.h">
-      <Filter>EntityComponentSystem\Composition\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Components</Filter>
     </ClInclude>
     <ClInclude Include="Box.h">
       <Filter>Header Files\Physics</Filter>
@@ -537,19 +537,19 @@
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="EntityBuilder.h">
-      <Filter>EntityComponentSystem\DataDrivenEnTT</Filter>
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT</Filter>
     </ClInclude>
     <ClInclude Include="TransformEnTT.h">
-      <Filter>EntityComponentSystem\DataDrivenEnTT\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
     </ClInclude>
     <ClInclude Include="RenderEnTT.h">
-      <Filter>EntityComponentSystem\DataDrivenEnTT\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
     </ClInclude>
     <ClInclude Include="RenderSystemEnTT.h">
-      <Filter>EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
     </ClInclude>
     <ClInclude Include="TransformSystemEnTT.h">
-      <Filter>EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
