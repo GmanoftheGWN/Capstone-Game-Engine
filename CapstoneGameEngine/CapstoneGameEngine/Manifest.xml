@@ -33,14 +33,14 @@
         <Orientation type="AngleAxis" angle="-90.0" axisX="1.0" axisY="0.0" axisZ="0.0"/>
       </Component>
       <Component name ="Mesh" filename="meshes/Hammer.obj"/>
-      <Component name ="Material" filename="textures/hammer_BaseColor.png"/>
+      <Component name ="Material" filename="textures/hammer_BaseColorS.png"/>
       <Component name ="Shader" vertFilename="shaders/textureVert.glsl" fragFilename="shaders/textureFrag.glsl"/>
     </Actor>
 
     <Component name ="Mesh" type ="MarioMesh" filename="meshes/Mario.obj"/>
     <Component name ="Mesh" type ="HammerMesh" filename="meshes/Hammer.obj"/>
     <Component name ="Material" type ="MarioTexture" filename="textures/mario_fire.png"/>
-    <Component name ="Material" type ="HammerTexture" filename="textures/hammer_BaseColor.png"/>
+    <Component name ="Material" type ="HammerTexture" filename="textures/hammer_BaseColorS.png"/>
     <Component name ="Shader" type ="TextureShader" vertFilename="shaders/textureVert.glsl" fragFilename="shaders/textureFrag.glsl"/>
 
   </Scene0>

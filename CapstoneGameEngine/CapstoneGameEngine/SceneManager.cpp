@@ -5,6 +5,7 @@
 #include "Scene0.h"
 #include "Scene1.h"
 #include "AI_Test.h"
+#include "EnTT_Test.h"
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
@@ -82,7 +83,7 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 	}
 
 	/********************************   Default first scene   ***********************/
-	BuildNewScene(SCENE_NUMBER::AITEST);
+	BuildNewScene(SCENE_NUMBER::ENTT_TEST);
 
 	return true;
 }
@@ -165,6 +166,11 @@ void SceneManager::BuildNewScene(SCENE_NUMBER scene) {
 
 	case SCENE_NUMBER::AITEST:
 		currentScene = new AI_Test(this);
+		status = currentScene->OnCreate();
+		break;
+
+	case SCENE_NUMBER::ENTT_TEST:
+		currentScene = new EnTT_Test();
 		status = currentScene->OnCreate();
 		break;
 

@@ -20,7 +20,7 @@ public:
 		SCENE0 = 0,
 		SCENE1,
 		AITEST,
-		SCENE3,
+		ENTT_TEST,
 		SCENE4,
 		SCENE5,
 		SCENE6
