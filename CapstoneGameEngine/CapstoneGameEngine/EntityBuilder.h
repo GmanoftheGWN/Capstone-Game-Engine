@@ -4,6 +4,7 @@
 #include "External/EnTT/entt.hpp"
 #include "TransformEnTT.h"
 #include "RenderEnTT.h"
+#include "PhysxIDEnTT.h"
 
 entt::entity makeCamera(entt::registry& registry_);
 entt::entity makePlayer(entt::registry& registry_);

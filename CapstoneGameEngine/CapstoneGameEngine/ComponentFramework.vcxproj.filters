@@ -309,6 +309,12 @@
     <ClCompile Include="RenderSystemEnTT.cpp">
       <Filter>Source Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
     </ClCompile>
+    <ClCompile Include="AISystemEnTT.cpp">
+      <Filter>Source Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraSystemEnTT.cpp">
+      <Filter>Source Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Timer.h">
@@ -550,6 +556,24 @@
     </ClInclude>
     <ClInclude Include="TransformSystemEnTT.h">
       <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="AIEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="LightEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AISystemEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraSystemEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysxIDEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

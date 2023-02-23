@@ -55,6 +55,8 @@
 #include "EntityBuilder.h"
 #include "TransformSystemEnTT.h"
 
+std::vector<std::shared_ptr<int>> physxIDs;
+
 float globalTime;
 entt::registry globalRegistry;
 void globalEntityUpdate(float deltaTime) {
@@ -148,17 +150,64 @@ void initPhysics(bool interactive)
 
 		shape->release();
 
-		makeObject(globalRegistry);
+		entt::entity object = makeObject(globalRegistry);
+		globalRegistry.emplace<PhysxIDEnTT>(object);
 		makeLight(globalRegistry);
-	}
 
+		physxIDs.push_back(std::make_shared<int>());
+		body->userData = physxIDs[physxIDs.size() - 1].get();
+		globalRegistry.get<PhysxIDEnTT>(object).physxID = static_cast<int*>(body->userData);
+	}
 }
 
 void stepPhysics(bool /*interactive*/)
 {
+	std::array<PxActor*, 1000> actors;
+	PxU32 numActors = 0;
+	numActors = gScene->getActors(PxActorTypeFlag::eRIGID_DYNAMIC, actors.data(), 1000, 0);
+
 	globalEntityUpdate(1.0f / 60.0f);
+
+	for (int i = 0; i < numActors; i++)
+	{
+		auto rigidBody = static_cast<PxRigidDynamic*>(actors[i]);
+		if (rigidBody)
+		{
+			auto view = globalRegistry.view<TransformEnTT, PhysxIDEnTT>();
+			for (const entt::entity e : view) {
+				if (rigidBody->userData == view.get<PhysxIDEnTT>(e).physxID)
+				{
+					Vec3 position = view.get<TransformEnTT>(e).position;
+					Quaternion orientation = view.get<TransformEnTT>(e).orientation;
+					PxTransform transform = PxTransform(position.x, position.y, position.z, PxQuat(orientation.ijk.x, orientation.ijk.y, orientation.ijk.z, orientation.w));
+					static_cast<PxRigidDynamic*>(actors[i])->setGlobalPose(transform);
+				}
+			}
+		}
+	}
+
 	gScene->simulate(1.0f / 60.0f);
 	gScene->fetchResults(true);
+
+	for (int i = 0; i < numActors; i++)
+	{
+		auto rigidBody = static_cast<PxRigidDynamic*>(actors[i]);
+		if (rigidBody)
+		{
+			auto view = globalRegistry.view<TransformEnTT, PhysxIDEnTT>();
+			for (const entt::entity e : view) {
+				if (rigidBody->userData == view.get<PhysxIDEnTT>(e).physxID)
+				{
+					view.get<TransformEnTT>(e).position.x = static_cast<PxRigidDynamic*>(actors[i])->getGlobalPose().p.x;
+					view.get<TransformEnTT>(e).position.y = static_cast<PxRigidDynamic*>(actors[i])->getGlobalPose().p.y;
+					view.get<TransformEnTT>(e).position.z = static_cast<PxRigidDynamic*>(actors[i])->getGlobalPose().p.z;
+
+					PxQuat orientation = static_cast<PxRigidDynamic*>(actors[i])->getGlobalPose().q;
+					view.get<TransformEnTT>(e).orientation = Quaternion(orientation.w, orientation.x, orientation.y, orientation.z);
+				}
+			}
+		}
+	}
 }
 
 void cleanupPhysics(bool /*interactive*/)
