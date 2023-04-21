@@ -187,6 +187,7 @@
     <ClCompile Include="MaterialComponent.cpp" />
     <ClCompile Include="MeshComponent.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="OOP_Test.cpp" />
     <ClCompile Include="OpenGLRenderer.cpp" />
     <ClCompile Include="Path.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -263,6 +264,7 @@
     <ClInclude Include="MaterialComponent.h" />
     <ClInclude Include="MeshComponent.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="OOP_Test.h" />
     <ClInclude Include="OpenGLRenderer.h" />
     <ClInclude Include="Path.h" />
     <ClInclude Include="PhysxIDEnTT.h" />

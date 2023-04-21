@@ -315,6 +315,9 @@
     <ClCompile Include="CameraSystemEnTT.cpp">
       <Filter>Source Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
     </ClCompile>
+    <ClCompile Include="OOP_Test.cpp">
+      <Filter>Header Files\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Timer.h">
@@ -574,6 +577,9 @@
     </ClInclude>
     <ClInclude Include="PhysxIDEnTT.h">
       <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="OOP_Test.h">
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

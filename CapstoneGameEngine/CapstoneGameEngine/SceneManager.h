@@ -21,7 +21,7 @@ public:
 		SCENE1,
 		AITEST,
 		ENTT_TEST,
-		SCENE4,
+		OOP_TEST,
 		SCENE5,
 		SCENE6
 	};

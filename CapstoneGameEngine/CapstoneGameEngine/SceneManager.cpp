@@ -6,6 +6,7 @@
 #include "Scene1.h"
 #include "AI_Test.h"
 #include "EnTT_Test.h"
+#include "OOP_Test.h"
 
 SceneManager::SceneManager(): 
 	currentScene(nullptr), window(nullptr), timer(nullptr),
@@ -84,6 +85,7 @@ bool SceneManager::Initialize(std::string name_, int width_, int height_) {
 
 	/********************************   Default first scene   ***********************/
 	BuildNewScene(SCENE_NUMBER::ENTT_TEST);
+	//BuildNewScene(SCENE_NUMBER::OOP_TEST);
 
 	return true;
 }
@@ -173,6 +175,11 @@ void SceneManager::BuildNewScene(SCENE_NUMBER scene) {
 		currentScene = new EnTT_Test();
 		status = currentScene->OnCreate();
 		break;
+
+	/*case SCENE_NUMBER::OOP_TEST:
+		currentScene = new OOP_Test();
+		status = currentScene->OnCreate();
+		break;*/
 
 	default:
 		Debug::Error("Incorrect scene number assigned in the manager", __FILE__, __LINE__);

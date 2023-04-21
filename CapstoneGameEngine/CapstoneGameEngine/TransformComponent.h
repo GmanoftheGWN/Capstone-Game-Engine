@@ -67,5 +67,7 @@ public:
 	}
 	void SetParent(Ref<Component> parent_) { parent = parent_; }
 	void Render() const;
+
+	int* physxID;
 };
 

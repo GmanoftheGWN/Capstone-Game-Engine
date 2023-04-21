@@ -50,18 +50,29 @@
 #include "EnTT_Test.h"
 #include "MMath.h"
 #include "QMath.h"
+#include "Timer.h"
 #include "Debug.h"
 
 #include "EntityBuilder.h"
 #include "TransformSystemEnTT.h"
 
 std::vector<std::shared_ptr<int>> physxIDs;
+std::unordered_map<const char*, float> UpdateProfiling;
 
 float globalTime;
 entt::registry globalRegistry;
 void globalEntityUpdate(float deltaTime) {
+	UpdateProfiling.insert(std::pair<const char*, float>("SinUpdate", 0.0f));
+	ProfilingTimer character("SinUpdate", &UpdateProfiling);
+
+	//UpdateEnTT(globalRegistry, globalTime);
+	auto view = globalRegistry.view<TransformEnTT, RenderEnTT>();
+	for (const entt::entity e : view) {
+		view.get<TransformEnTT>(e).position.y += sin(globalTime);
+		printf("%d- x: %f y: %f\n", e, view.get<TransformEnTT>(e).position.x, view.get<TransformEnTT>(e).position.y);
+	}
+		
 	globalTime += deltaTime;
-	UpdateEnTT(globalRegistry, globalTime);
 	printf("%f\n", globalTime);
 }
 
@@ -162,6 +173,9 @@ void initPhysics(bool interactive)
 
 void stepPhysics(bool /*interactive*/)
 {
+	UpdateProfiling.insert(std::pair<const char*, float>("StepPhysics", 0.0f));
+	ProfilingTimer character("StepPhysics", &UpdateProfiling);
+
 	std::array<PxActor*, 1000> actors;
 	PxU32 numActors = 0;
 	numActors = gScene->getActors(PxActorTypeFlag::eRIGID_DYNAMIC, actors.data(), 1000, 0);
@@ -273,6 +287,11 @@ void exitCallback(void)
 {
 	delete sCamera;
 	cleanupPhysics(true);
+
+	for (auto u : UpdateProfiling)
+	{
+		std::cout << std::endl << "Total time in ms spent in: " << u.first << " " << u.second << std::endl;
+	}
 }
 
 void renderLoop()
