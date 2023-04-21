@@ -119,7 +119,7 @@ struct CameraUBO {
     Matrix4 proj;
 };
 
-struct LightingUBO {
+struct LightingUBO { //TODO: make this global lights
     Vec4 lightPos[3];
     Vec4 diffColour[3];
 };

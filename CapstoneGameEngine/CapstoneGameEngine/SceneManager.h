@@ -20,8 +20,8 @@ public:
 		SCENE0 = 0,
 		SCENE1,
 		AITEST,
-		SCENE3,
-		SCENE4,
+		ENTT_TEST,
+		OOP_TEST,
 		SCENE5,
 		SCENE6
 	};

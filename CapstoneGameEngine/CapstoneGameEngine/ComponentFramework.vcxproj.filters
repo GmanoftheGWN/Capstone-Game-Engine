@@ -25,35 +25,11 @@
     <Filter Include="Source Files\Scenes">
       <UniqueIdentifier>{e8c82a08-d757-47ee-b6fe-eee59a99570f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Actors">
-      <UniqueIdentifier>{9bcb0501-a6be-4580-b5e3-4f778425bd4c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Actors">
-      <UniqueIdentifier>{1bca0a0d-cc10-4281-b276-1c4fc9286717}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Components">
-      <UniqueIdentifier>{c9ad0367-8211-4cd9-861a-d68c83f3a961}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Components">
-      <UniqueIdentifier>{1a8dfff7-eff7-41fe-92c9-14a3d63ba3d7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Utility">
       <UniqueIdentifier>{7f428543-bf39-4b66-b275-08215ab91ce2}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Utility">
       <UniqueIdentifier>{d7d2f79d-ef77-4bd9-8058-f6a88cc92535}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Steering">
-      <UniqueIdentifier>{4a365dce-1ac6-4a08-8c30-799c620eb68b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Steering">
-      <UniqueIdentifier>{70482075-b931-4d51-be16-cca4b2e4f03c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Pathfinding">
-      <UniqueIdentifier>{da9011d6-c144-4341-937c-d67218eaa9f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Pathfinding">
-      <UniqueIdentifier>{3b57b173-6eb3-422c-89b2-a000f64638f9}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Physics">
       <UniqueIdentifier>{10c56aa1-d61c-4062-beb6-965330a51bc2}</UniqueIdentifier>
@@ -61,17 +37,77 @@
     <Filter Include="Source Files\Physics">
       <UniqueIdentifier>{eaf807d2-e254-437c-8c66-2fc2d58fb222}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\DecisionMaking">
-      <UniqueIdentifier>{71570106-8efa-4da4-b172-c6e45d73b825}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\DecisionMaking">
-      <UniqueIdentifier>{9c8f5606-0492-4165-94f1-89da87e6522e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Renderers">
       <UniqueIdentifier>{c072c8c6-bbd4-44e0-ab31-9952d17cc239}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Renderers">
       <UniqueIdentifier>{e52a10ec-8e4b-49bd-b8c7-02968ad5f842}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EntityComponentSystem">
+      <UniqueIdentifier>{877ebf1d-c807-43a3-8e6c-62225a8777a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AI">
+      <UniqueIdentifier>{4e22320a-1471-4dd6-b82a-23206173854e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AI\Pathfinding">
+      <UniqueIdentifier>{da9011d6-c144-4341-937c-d67218eaa9f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AI\Steering">
+      <UniqueIdentifier>{4a365dce-1ac6-4a08-8c30-799c620eb68b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AI\DecisionMaking">
+      <UniqueIdentifier>{71570106-8efa-4da4-b172-c6e45d73b825}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI">
+      <UniqueIdentifier>{75fe4888-91d2-4e65-9040-027846b3527b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI\Pathfinding">
+      <UniqueIdentifier>{3b57b173-6eb3-422c-89b2-a000f64638f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI\Steering">
+      <UniqueIdentifier>{70482075-b931-4d51-be16-cca4b2e4f03c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AI\DecisionMaking">
+      <UniqueIdentifier>{9c8f5606-0492-4165-94f1-89da87e6522e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EntityComponentSystem\Composition">
+      <UniqueIdentifier>{025706aa-7a43-4183-8cac-54bc471c7faa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EntityComponentSystem\Composition\Components">
+      <UniqueIdentifier>{1a8dfff7-eff7-41fe-92c9-14a3d63ba3d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EntityComponentSystem\Composition\Actors">
+      <UniqueIdentifier>{9bcb0501-a6be-4580-b5e3-4f778425bd4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EntityComponentSystem\DataDrivenEnTT">
+      <UniqueIdentifier>{0fbe8bd0-eed0-40a5-b624-c324b6883619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EntityComponentSystem\DataDrivenEnTT\Components">
+      <UniqueIdentifier>{116a5e1b-7c09-4755-a263-5825fa7baf9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EntityComponentSystem\DataDrivenEnTT\Systems">
+      <UniqueIdentifier>{0f8d642b-ea7e-4b8b-aa8d-22075822041e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem">
+      <UniqueIdentifier>{2a7a634c-9461-404a-967e-03313fcdaa63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem\DataDrivenEnTT">
+      <UniqueIdentifier>{0f249981-a5f5-4d4f-954c-b85ad6d53838}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem\DataDrivenEnTT\Components">
+      <UniqueIdentifier>{ba5214b1-b4b8-482d-abb7-c540e26ec5bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem\DataDrivenEnTT\Systems">
+      <UniqueIdentifier>{c3232909-34c8-4c1d-904a-b4e33d8fb614}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem\Composition">
+      <UniqueIdentifier>{ef40ec2a-c584-4922-a9d9-6d2a39fe1f94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem\Composition\Actors">
+      <UniqueIdentifier>{1bca0a0d-cc10-4281-b276-1c4fc9286717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\EntityComponentSystem\Composition\Components">
+      <UniqueIdentifier>{c9ad0367-8211-4cd9-861a-d68c83f3a961}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -103,25 +139,25 @@
       <Filter>Source Files\Math</Filter>
     </ClCompile>
     <ClCompile Include="Actor.cpp">
-      <Filter>Source Files\Actors</Filter>
+      <Filter>Source Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClCompile>
     <ClCompile Include="CameraActor.cpp">
-      <Filter>Source Files\Actors</Filter>
+      <Filter>Source Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClCompile>
     <ClCompile Include="MaterialComponent.cpp">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Source Files\EntityComponentSystem\Composition\Components</Filter>
     </ClCompile>
     <ClCompile Include="MeshComponent.cpp">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Source Files\EntityComponentSystem\Composition\Components</Filter>
     </ClCompile>
     <ClCompile Include="TransformComponent.cpp">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Source Files\EntityComponentSystem\Composition\Components</Filter>
     </ClCompile>
     <ClCompile Include="ShaderComponent.cpp">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Source Files\EntityComponentSystem\Composition\Components</Filter>
     </ClCompile>
     <ClCompile Include="LightActor.cpp">
-      <Filter>Source Files\Actors</Filter>
+      <Filter>Source Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClCompile>
     <ClCompile Include="Scene1.cpp">
       <Filter>Source Files\Scenes</Filter>
@@ -139,61 +175,61 @@
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Character.cpp">
-      <Filter>Source Files\Actors</Filter>
+      <Filter>Source Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Actors</Filter>
+      <Filter>Source Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClCompile>
     <ClCompile Include="SteeringOutput.cpp">
-      <Filter>Source Files\Steering</Filter>
+      <Filter>Source Files\AI\Steering</Filter>
     </ClCompile>
     <ClCompile Include="KinematicSteeringOutput.cpp">
-      <Filter>Source Files\Steering</Filter>
+      <Filter>Source Files\AI\Steering</Filter>
     </ClCompile>
     <ClCompile Include="StaticBody.cpp">
-      <Filter>Source Files\Steering</Filter>
+      <Filter>Source Files\AI\Steering</Filter>
     </ClCompile>
     <ClCompile Include="KinematicBody.cpp">
-      <Filter>Source Files\Steering</Filter>
+      <Filter>Source Files\AI\Steering</Filter>
     </ClCompile>
     <ClCompile Include="KinematicSeek.cpp">
-      <Filter>Source Files\Steering</Filter>
+      <Filter>Source Files\AI\Steering</Filter>
     </ClCompile>
     <ClCompile Include="KinematicArrive.cpp">
-      <Filter>Source Files\Steering</Filter>
+      <Filter>Source Files\AI\Steering</Filter>
     </ClCompile>
     <ClCompile Include="SteeringBehaviour.cpp">
-      <Filter>Source Files\Steering</Filter>
+      <Filter>Source Files\AI\Steering</Filter>
     </ClCompile>
     <ClCompile Include="Seek.cpp">
-      <Filter>Source Files\Steering</Filter>
+      <Filter>Source Files\AI\Steering</Filter>
     </ClCompile>
     <ClCompile Include="Pursue.cpp">
-      <Filter>Source Files\Steering</Filter>
+      <Filter>Source Files\AI\Steering</Filter>
     </ClCompile>
     <ClCompile Include="KinematicFlee.cpp">
-      <Filter>Source Files\Steering</Filter>
+      <Filter>Source Files\AI\Steering</Filter>
     </ClCompile>
     <ClCompile Include="Evade.cpp">
-      <Filter>Source Files\Steering</Filter>
+      <Filter>Source Files\AI\Steering</Filter>
     </ClCompile>
     <ClCompile Include="Graph.cpp">
-      <Filter>Source Files\Pathfinding</Filter>
+      <Filter>Source Files\AI\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="Node.cpp">
-      <Filter>Source Files\Pathfinding</Filter>
+      <Filter>Source Files\AI\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
-      <Filter>Source Files\Pathfinding</Filter>
+      <Filter>Source Files\AI\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="CollisionAvoidance.cpp">
-      <Filter>Source Files\Steering</Filter>
+      <Filter>Source Files\AI\Steering</Filter>
     </ClCompile>
     <ClCompile Include="FollowAPath.cpp">
-      <Filter>Source Files\Pathfinding</Filter>
+      <Filter>Source Files\AI\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="Path.cpp">
-      <Filter>Source Files\Pathfinding</Filter>
+      <Filter>Source Files\AI\Pathfinding</Filter>
     </ClCompile>
     <ClCompile Include="Shape.cpp">
       <Filter>Source Files\Physics</Filter>
@@ -211,46 +247,46 @@
       <Filter>Source Files\Physics</Filter>
     </ClCompile>
     <ClCompile Include="ShapeComponent.cpp">
-      <Filter>Source Files\Components</Filter>
+      <Filter>Source Files\EntityComponentSystem\Composition\Components</Filter>
     </ClCompile>
     <ClCompile Include="Action.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="Condition.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="ConditionInRange.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="ConditionOutOfRange.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="Decision.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="DecisionTreeNode.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="PlayerInRangeDecision.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="State.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="StateMachine.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="Transition.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="ConditionInView.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="CloserToPlayerThanTargetDecision.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="PlayerInViewDecision.cpp">
-      <Filter>Source Files\DecisionMaking</Filter>
+      <Filter>Source Files\AI\DecisionMaking</Filter>
     </ClCompile>
     <ClCompile Include="OpenGLRenderer.cpp">
       <Filter>Source Files\Renderers</Filter>
@@ -260,6 +296,27 @@
     </ClCompile>
     <ClCompile Include="Hash.cpp">
       <Filter>Source Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EnTT_Test.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityBuilder.cpp">
+      <Filter>Source Files\EntityComponentSystem\DataDrivenEnTT</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformSystemEnTT.cpp">
+      <Filter>Source Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystemEnTT.cpp">
+      <Filter>Source Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="AISystemEnTT.cpp">
+      <Filter>Source Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraSystemEnTT.cpp">
+      <Filter>Source Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="OOP_Test.cpp">
+      <Filter>Header Files\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -312,28 +369,28 @@
       <Filter>Header Files\Math</Filter>
     </ClInclude>
     <ClInclude Include="Actor.h">
-      <Filter>Header Files\Actors</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Components</Filter>
     </ClInclude>
     <ClInclude Include="CameraActor.h">
-      <Filter>Header Files\Actors</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClInclude>
     <ClInclude Include="MaterialComponent.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Components</Filter>
     </ClInclude>
     <ClInclude Include="MeshComponent.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Components</Filter>
     </ClInclude>
     <ClInclude Include="TransformComponent.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Components</Filter>
     </ClInclude>
     <ClInclude Include="ShaderComponent.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Components</Filter>
     </ClInclude>
     <ClInclude Include="LightActor.h">
-      <Filter>Header Files\Actors</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClInclude>
     <ClInclude Include="Scene1.h">
       <Filter>Header Files\Scenes</Filter>
@@ -357,64 +414,64 @@
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Header Files\Actors</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
-      <Filter>Header Files\Actors</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Actors</Filter>
     </ClInclude>
     <ClInclude Include="SteeringOutput.h">
-      <Filter>Header Files\Steering</Filter>
+      <Filter>Header Files\AI\Steering</Filter>
     </ClInclude>
     <ClInclude Include="KinematicSteeringOutput.h">
-      <Filter>Header Files\Steering</Filter>
+      <Filter>Header Files\AI\Steering</Filter>
     </ClInclude>
     <ClInclude Include="StaticBody.h">
-      <Filter>Header Files\Steering</Filter>
+      <Filter>Header Files\AI\Steering</Filter>
     </ClInclude>
     <ClInclude Include="KinematicBody.h">
-      <Filter>Header Files\Steering</Filter>
+      <Filter>Header Files\AI\Steering</Filter>
     </ClInclude>
     <ClInclude Include="KinematicSeek.h">
-      <Filter>Header Files\Steering</Filter>
+      <Filter>Header Files\AI\Steering</Filter>
     </ClInclude>
     <ClInclude Include="KinematicArrive.h">
-      <Filter>Header Files\Steering</Filter>
+      <Filter>Header Files\AI\Steering</Filter>
     </ClInclude>
     <ClInclude Include="SteeringBehaviour.h">
-      <Filter>Header Files\Steering</Filter>
+      <Filter>Header Files\AI\Steering</Filter>
     </ClInclude>
     <ClInclude Include="Seek.h">
-      <Filter>Header Files\Steering</Filter>
+      <Filter>Header Files\AI\Steering</Filter>
     </ClInclude>
     <ClInclude Include="Pursue.h">
-      <Filter>Header Files\Steering</Filter>
+      <Filter>Header Files\AI\Steering</Filter>
     </ClInclude>
     <ClInclude Include="KinematicFlee.h">
-      <Filter>Header Files\Steering</Filter>
+      <Filter>Header Files\AI\Steering</Filter>
     </ClInclude>
     <ClInclude Include="Evade.h">
-      <Filter>Header Files\Steering</Filter>
+      <Filter>Header Files\AI\Steering</Filter>
     </ClInclude>
     <ClInclude Include="Graph.h">
-      <Filter>Header Files\Pathfinding</Filter>
+      <Filter>Header Files\AI\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="Node.h">
-      <Filter>Header Files\Pathfinding</Filter>
+      <Filter>Header Files\AI\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="Tile.h">
-      <Filter>Header Files\Pathfinding</Filter>
+      <Filter>Header Files\AI\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="CollisionAvoidance.h">
-      <Filter>Header Files\Steering</Filter>
+      <Filter>Header Files\AI\Steering</Filter>
     </ClInclude>
     <ClInclude Include="FollowAPath.h">
-      <Filter>Header Files\Pathfinding</Filter>
+      <Filter>Header Files\AI\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="Path.h">
-      <Filter>Header Files\Pathfinding</Filter>
+      <Filter>Header Files\AI\Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="ShapeComponent.h">
-      <Filter>Header Files\Components</Filter>
+      <Filter>Header Files\EntityComponentSystem\Composition\Components</Filter>
     </ClInclude>
     <ClInclude Include="Box.h">
       <Filter>Header Files\Physics</Filter>
@@ -432,43 +489,43 @@
       <Filter>Header Files\Physics</Filter>
     </ClInclude>
     <ClInclude Include="Action.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="Condition.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="ConditionInRange.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="ConditionOutOfRange.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="Decision.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="DecisionTreeNode.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="PlayerInRangeDecision.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="State.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="StateMachine.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="Transition.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="ConditionInView.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="CloserToPlayerThanTargetDecision.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="PlayerInViewDecision.h">
-      <Filter>Header Files\DecisionMaking</Filter>
+      <Filter>Header Files\AI\DecisionMaking</Filter>
     </ClInclude>
     <ClInclude Include="OpenGLRenderer.h">
       <Filter>Header Files\Renderers</Filter>
@@ -484,6 +541,45 @@
     </ClInclude>
     <ClInclude Include="TinyObjInclude.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnTT_Test.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityBuilder.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystemEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformSystemEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="AIEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="LightEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AISystemEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraSystemEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysxIDEnTT.h">
+      <Filter>Header Files\EntityComponentSystem\DataDrivenEnTT\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="OOP_Test.h">
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
